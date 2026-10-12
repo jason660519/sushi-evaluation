@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Australian Sushi Business Evaluation | 家庭會議評估指南</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0f172a;
+      --bg-surface: #1e293b;
+      --bg-card: #182234;
+      --bg-card-hover: #233149;
+      --border-color: #334155;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent-coral: #f97316;
+      --accent-coral-glow: rgba(249, 115, 22, 0.2);
+      --accent-emerald: #10b981;
+      --accent-emerald-glow: rgba(16, 185, 129, 0.2);
+      --accent-blue: #38bdf8;
+      --accent-amber: #f59e0b;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --font-en: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-zh: 'Noto Sans TC', system-ui, sans-serif;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-en);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+    }
+
+    body.lang-zh {
+      font-family: var(--font-zh);
+    }
+
+    /* Top Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-tag {
+      background: linear-gradient(135deg, #ea580c, #f97316);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    .brand-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lang-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn:hover {
+      background: var(--border-color);
+      border-color: var(--accent-coral);
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 1200px;
+      margin: 40px auto 30px;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent-blue);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 780px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Section Styling */
+    section {
+      margin-top: 50px;
+    }
+
+    .section-header {
+      margin-bottom: 24px;
+    }
+
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-coral);
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .section-desc {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-top: 6px;
+    }
+
+    /* Cards Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .card:hover {
+      border-color: #475569;
+      transform: translateY(-2px);
+    }
+
+    .card.highlight {
+      border-color: rgba(249, 115, 22, 0.4);
+      background: linear-gradient(180deg, rgba(249, 115, 22, 0.05) 0%, var(--bg-card) 100%);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .icon-orange {
+      background: rgba(249, 115, 22, 0.15);
+      color: var(--accent-coral);
+    }
+
+    .icon-emerald {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-emerald);
+    }
+
+    .icon-blue {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-blue);
+    }
+
+    .icon-amber {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-amber);
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+
+    .card-body {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .card-body p {
+      margin-bottom: 12px;
+    }
+
+    .card-body ul {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    .card-body li {
+      margin-bottom: 6px;
+    }
+
+    /* Badge Tags */
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .tag-emerald {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-emerald);
+    }
+
+    .tag-amber {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-amber);
+    }
+
+    .tag-blue {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-blue);
+    }
+
+    /* Target Kiosk Profile Banner */
+    .target-banner {
+      background: linear-gradient(135deg, #1e293b 0%, #172554 100%);
+      border: 1px solid #3b82f6;
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 860px) {
+      .target-banner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .metric-pill {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      margin-top: 10px;
+    }
+
+    .metric-val {
+      font-size: 26px;
+      font-weight: 800;
+      color: #38bdf8;
+    }
+
+    .metric-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Interactive Simulator */
+    .simulator-wrapper {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1.1fr 1.2fr;
+      gap: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .simulator-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sim-controls h3 {
+      font-size: 19px;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+    }
+
+    .control-group {
+      margin-bottom: 22px;
+    }
+
+    .control-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .control-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .control-value {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--accent-coral);
+      font-feature-settings: "tnum";
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: #334155;
+      outline: none;
+      accent-color: var(--accent-coral);
+      cursor: pointer;
+    }
+
+    .sim-results {
+      background: var(--bg-card);
+      border: 1px solid #334155;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .result-hero {
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .result-hero-num {
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--accent-emerald);
+      letter-spacing: -0.02em;
+    }
+
+    .result-hero-sub {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .result-breakdown {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+    }
+
+    .breakdown-row.total {
+      font-weight: 700;
+      border-bottom: none;
+      padding-top: 8px;
+      font-size: 15px;
+      color: var(--text-primary);
+    }
+
+    /* Comparison Table */
+    .table-responsive {
+      overflow-x: auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      font-weight: 700;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--text-secondary);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .table-highlight {
+      color: #38bdf8;
+      font-weight: 700;
+    }
+
+    /* Checklist */
+    .checklist-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .checklist-box {
+      min-width: 20px;
+      height: 20px;
+      margin-top: 3px;
+      border-radius: 4px;
+      border: 2px solid var(--accent-coral);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-coral);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Footer */
+    footer {
+      max-width: 1200px;
+      margin: 60px auto 0;
+      padding: 24px;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* Quick jump anchor links */
+    .quick-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .quick-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+
+    .quick-links a:hover {
+      border-color: var(--accent-blue);
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+<body class="lang-zh">
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <span class="brand-tag">Family Meeting</span>
+      <span class="brand-title" data-i18n="nav_title">澳洲壽司生意投資評估與教學</span>
+    </div>
+    <div class="nav-actions">
+      <button class="lang-btn" id="langToggle">
+        <span id="langLabel">English / 中文切換</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge" data-i18n="hero_badge">Family Business Investment Decision | 家庭商業投資決策指南</div>
+    <h1 class="hero-title" data-i18n="hero_title">如何客觀評估一間澳洲壽司店的投資價值？</h1>
+    <p class="hero-subtitle" data-i18n="hero_desc">
+      本指南專門為全家討論設計，幫助我們用清晰的商業邏輯（CapEx vs OpEx、夫妻自營時薪模型、真實市場對比）評估當前剛開幕的 Coles 專櫃與全澳其他壽司生意的優劣。
+    </p>
+    <div class="quick-links">
+      <a href="#target-deal" data-i18n="link_target">1. 當前目標標的 (Target Deal)</a>
+      <a href="#business-concepts" data-i18n="link_concept">2. 商學院核心概念 (Core Concepts)</a>
+      <a href="#market-comparison" data-i18n="link_market">3. 全澳貨比三家 (Market Benchmarks)</a>
+      <a href="#simulator" data-i18n="link_calc">4. 互動收益試算機 (Calculator)</a>
+      <a href="#questions" data-i18n="link_questions">5. 兒子向賣方提問題綱 (Due Diligence)</a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Section 1: The Target Deal -->
+    <section id="target-deal">
+      <div class="section-header">
+        <div class="section-eyebrow" data-i18n="s1_eyebrow">Case Study #1</div>
+        <h2 class="section-title" data-i18n="s1_title">目前評估中標的：Coles 超市內的 Snowfox 壽司專櫃</h2>
+        <div class="section-desc" data-i18n="s1_desc">這是目前考慮接手的門市基礎數據與營運條件。</div>
+      </div>
+
+      <div class="target-banner">
+        <div>
+          <span class="tag tag-amber" data-i18n="tag_brand_new">上週剛開幕 (Opened 1 Week Ago)</span>
+          <h3 style="font-size: 24px; margin: 12px 0 8px;" data-i18n="target_name">Snowfox Kiosk @ Coles Supermarket</h3>
+          <p style="color: var(--text-secondary); font-size: 14px;" data-i18n="target_intro">
+            位於大型連鎖超市 Coles 內部的特許壽司吧。由 Coles 與總部提供櫃位、冰箱、冷庫與水電。
+          </p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;">
+            <div class="metric-pill">
+              <div class="metric-label" data-i18n="label_asking">收購總價 (Asking Price)</div>
+              <div class="metric-val">$70,000 <span style="font-size: 14px; color: var(--text-secondary);">AUD</span></div>
+            </div>
+            <div class="metric-pill">
+              <div class="metric-label" data-i18n="label_royalty">Coles + 總部抽成</div>
+              <div class="metric-val" style="color: #f97316;">33% <span style="font-size: 14px; color: var(--text-secondary);">未稅營收</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: rgba(15, 23, 42, 0.5); padding: 20px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.08);">
+          <h4 style="font-size: 16px; margin-bottom: 12px; color: #38bdf8;" data-i18n="target_key_facts_title">關鍵事實與合約條件 (Key Facts)</h4>
+          <ul style="color: var(--text-secondary); font-size: 13.5px; line-height: 1.7; padding-left: 18px;">
+            <li data-i18n="fact_1"><strong>包含加盟金</strong>：$70,000 中包含支付給總公司的 $19,250 加盟金。</li>
+            <li data-i18n="fact_2"><strong>免付固定房租與水電</strong>：店內耗電極大的保冷櫃、展示台水電全由 Coles 負擔。</li>
+            <li data-i18n="fact_3"><strong>自持設備</strong>：買方擁有炸爐、壓飯機（Rice Sheeter）、廚具，其餘大件歸 Coles。</li>
+            <li data-i18n="fact_4"><strong>首週營運抽樣</strong>：開幕前 5 天營業額為 $6,768 未稅（日均 $1,353，外推週營收約 $9,500 - $10,400 含稅）。</li>
+            <li data-i18n="fact_5"><strong>食材損耗</strong>：目前每天製作約 180 盒，隔日丟棄約 20 盒（每盒食材成本約 $2）。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Core Business Concepts for Son -->
+    <section id="business-concepts">
+      <div class="section-header">
+        <div class="section-eyebrow" data-i18n="s2_eyebrow">Financial Literacy for Son</div>
+        <h2 class="section-title" data-i18n="s2_title">評估生意的三大商學院核心概念</h2>
+        <div class="section-desc" data-i18n="s2_desc">為什麼抽成 33% 表面看起來高，但在商業上卻可能有它的合理性？請學習這三個概念：</div>
+      </div>
+
+      <div class="grid-3">
+        <!-- Card 1: CapEx vs OpEx -->
+        <div class="card highlight">
+          <div class="card-icon icon-orange">01</div>
+          <h3 class="card-title" data-i18n="c1_title">CapEx vs. OpEx 的取捨</h3>
+          <div class="card-body">
+            <p data-i18n="c1_p1"><strong>CapEx (資本支出)</strong>：在澳洲開一間全新獨立店，做排煙、隔油池、水電、冷庫裝修，需要預付 <strong>$150,000 - $250,000 AUD</strong> 的巨款，且退租時需花數萬還原（Make Good）。</p>
+            <p data-i18n="c1_p2"><strong>OpEx (營運支出)</strong>：Coles 把這筆 20 萬的裝修和水電全部幫你出掉，代價是從你的銷售中抽走 <strong>33%</strong>。</p>
+            <p style="color: var(--accent-emerald); font-weight: 600;" data-i18n="c1_summary">💡 結論：這 33% 實質上是用每週的浮動抽成，換取「零前期裝修負債、零退場賠償風險」。</p>
+          </div>
+        </div>
+
+        <!-- Card 2: Buying a Job vs Business Investment -->
+        <div class="card">
+          <div class="card-icon icon-blue">02</div>
+          <h3 class="card-title" data-i18n="c2_title">「自買工作」還是「資本投資」？</h3>
+          <div class="card-body">
+            <p data-i18n="c2_p1"><strong>Buying a Job</strong>：如果一間店賺的錢，剛好只夠支付父母兩人每週辛苦站 40-50 小時的法定工資，那這不是純投資，而是花 $70,000 替自己買了一份穩定的勞動工作。</p>
+            <p data-i18n="c2_p2"><strong>True Business</strong>：只有當營收扣除給員工（或給父母自己）合理的市場工資後，還能剩下額外的淨利潤（Net Profit），才算有真正的資本回報。</p>
+            <p style="color: #38bdf8; font-weight: 600;" data-i18n="c2_summary">💡 討論焦點：父母投入的每小時勞動，實質換算下來時薪是多少？能否超越打工工資？</p>
+          </div>
+        </div>
+
+        <!-- Card 3: 1-Week-Old New Store Risk -->
+        <div class="card">
+          <div class="card-icon icon-amber">03</div>
+          <h3 class="card-title" data-i18n="c3_title">「剛開一週就賣」的特殊風險</h3>
+          <div class="card-body">
+            <p data-i18n="c3_p1"><strong>沒有歷史商譽 (Zero Goodwill)</strong>：這間店才開 7 天，沒有熟客、沒有一整年四季的報稅紀錄（BAS），不能當作成熟生意來買。</p>
+            <p data-i18n="c3_p2"><strong>開幕蜜月期現象</strong>：新開幕第一週常有好奇客流，營業額可能暫時偏高；隨後可能面臨 15%-25% 的回落。</p>
+            <p style="color: var(--accent-amber); font-weight: 600;" data-i18n="c3_summary">💡 核心問題：原店主為什麼才做了一週就要賣？是太累做不來？還是原本就是拓點代建商？</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Interactive Profit & Wage Calculator -->
+    <section id="simulator">
+      <div class="section-header">
+        <div class="section-eyebrow" data-i18n="s3_eyebrow">Interactive Simulation</div>
+        <h2 class="section-title" data-i18n="s3_title">家庭會議財務試算機：父母能賺多少錢？</h2>
+        <div class="section-desc" data-i18n="s3_desc">調整以下參數，即時查看每週營收在不同水準時，父母兩人每週能拿到多少現金、等效時薪是多少、以及多快能回本。</div>
+      </div>
+
+      <div class="simulator-wrapper">
+        <!-- Controls -->
+        <div class="sim-controls">
+          <h3 data-i18n="sim_controls_heading">營運變數設定 (Operational Inputs)</h3>
+
+          <div class="control-group">
+            <div class="control-header">
+              <span class="control-label" data-i18n="lbl_turnover">每週未稅營業額 (Weekly Sales ex GST)</span>
+              <span class="control-value" id="valTurnover">$9,500</span>
+            </div>
+            <input type="range" id="inputTurnover" min="6000" max="18000" step="500" value="9500">
+            <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;" data-i18n="tip_turnover">
+              目前開幕五天外推約 $9,500；一般成熟超市專櫃約 $11,000 - $14,000。
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="control-header">
+              <span class="control-label" data-i18n="lbl_royalty_slider">Coles + 總部抽成比率</span>
+              <span class="control-value" id="valRoyalty">33%</span>
+            </div>
+            <input type="range" id="inputRoyalty" min="25" max="38" step="1" value="33">
+          </div>
+
+          <div class="control-group">
+            <div class="control-header">
+              <span class="control-label" data-i18n="lbl_cogs">食材、耗損與包裝成本比率 (COGS)</span>
+              <span class="control-value" id="valCogs">30%</span>
+            </div>
+            <input type="range" id="inputCogs" min="25" max="36" step="1" value="30">
+          </div>
+
+          <div class="control-group">
+            <div class="control-header">
+              <span class="control-label" data-i18n="lbl_helper">外聘兼職員工每週工時 (Helper Hours)</span>
+              <span class="control-value" id="valHelper">0 小時</span>
+            </div>
+            <input type="range" id="inputHelper" min="0" max="40" step="5" value="0">
+            <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;" data-i18n="tip_helper">
+              按澳洲法定外聘薪資每小時 $34 + 12% 退休金 ($38.08/hr) 扣除。
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="control-header">
+              <span class="control-label" data-i18n="lbl_parents_hours">父母兩人每週合計自營工時 (Total Parents Hours)</span>
+              <span class="control-value" id="valParentsHours">80 小時</span>
+            </div>
+            <input type="range" id="inputParentsHours" min="40" max="90" step="5" value="80">
+            <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;" data-i18n="tip_hours">
+              如兩人各全職 40 小時 = 80 小時；若請外人分擔，父母工時可相應減少。
+            </div>
+          </div>
+        </div>
+
+        <!-- Output Display -->
+        <div class="sim-results">
+          <div>
+            <div class="result-hero">
+              <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary);" data-i18n="res_weekly_net">
+                父母每週稅前淨得現金 (Parents Weekly Net Cash)
+              </div>
+              <div class="result-hero-num" id="resWeeklyNet">$3,115</div>
+              <div class="result-hero-sub" id="resAnnualNet">年化家庭收入：$161,980 AUD / 年</div>
+            </div>
+
+            <div class="result-breakdown">
+              <div class="breakdown-row">
+                <span data-i18n="row_gross">每週未稅營業額</span>
+                <span id="rowGross" style="color: var(--text-primary); font-weight: 600;">$9,500</span>
+              </div>
+              <div class="breakdown-row">
+                <span data-i18n="row_royalty">Coles + 總部抽成 (33%)</span>
+                <span id="rowRoyalty" style="color: #f87171;">-$3,135</span>
+              </div>
+              <div class="breakdown-row">
+                <span data-i18n="row_cogs">食材、包裝與耗損 (30%)</span>
+                <span id="rowCogs" style="color: #f87171;">-$2,850</span>
+              </div>
+              <div class="breakdown-row">
+                <span data-i18n="row_helper">外聘幫工支出</span>
+                <span id="rowHelper" style="color: #f87171;">-$0</span>
+              </div>
+              <div class="breakdown-row">
+                <span data-i18n="row_fixed">雜費（保險/POS/清潔耗材）</span>
+                <span style="color: #f87171;">-$400</span>
+              </div>
+              <div class="breakdown-row total">
+                <span data-i18n="row_wage_equiv">父母等效時薪 (Hourly Rate per Parent)</span>
+                <span id="resHourlyRate" style="color: #38bdf8;">$38.94 / hr</span>
+              </div>
+              <div class="breakdown-row total">
+                <span data-i18n="row_payback">本金 $70,000 回本週期</span>
+                <span id="resPayback" style="color: var(--accent-amber);">約 5.6 個月</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-sm); padding: 12px; margin-top: 16px; font-size: 12.5px; color: #a7f3d0;" id="simInsight">
+            ✅ <strong>分析解讀</strong>：在此營收水準下，若夫妻全職親力親為，時薪約 $38.94，優於澳洲最低法定工資（$24.97），是一筆穩健的家庭自營收益。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Market Comparison Benchmarks -->
+    <section id="market-comparison">
+      <div class="section-header">
+        <div class="section-eyebrow" data-i18n="s4_eyebrow">Market Due Diligence</div>
+        <h2 class="section-title" data-i18n="s4_title">全澳壽司生意「貨比三家」真實行情清單</h2>
+        <div class="section-desc" data-i18n="s4_desc">了解全澳其他地方正在賣的壽司店，幫助我們判斷 $70,000 的價格是否具有性價比。</div>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="th_type">類型</th>
+              <th data-i18n="th_location">地點 / 品牌</th>
+              <th data-i18n="th_price">開價 (Asking)</th>
+              <th data-i18n="th_turnover">週營業額</th>
+              <th data-i18n="th_rent">租金 / 抽成架構</th>
+              <th data-i18n="th_char">商業特性與回報</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: rgba(56, 189, 248, 0.06);">
+              <td><span class="tag tag-blue" data-i18n="tag_target">當前標的</span></td>
+              <td><strong>Coles 專櫃 (Snowfox)</strong></td>
+              <td class="table-highlight">$70,000</td>
+              <td>約 $9,500/週</td>
+              <td>Coles 抽 33% (包水電設備)</td>
+              <td data-i18n="t_row1">開價全澳最低，零裝修風險，但剛開 1 週無歷史報稅。</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-amber" data-i18n="tag_wws">超市專櫃</span></td>
+              <td>Woolworths (Sushi Izu) - Byron Bay NSW</td>
+              <td>$89,250 + SAV</td>
+              <td>約 $10,000 - $12,000</td>
+              <td>超市抽成制 (無固定租金)</td>
+              <td data-i18n="t_row2">知名觀光區，已成熟營運，業主自營穩定。</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-amber" data-i18n="tag_wws">超市專櫃</span></td>
+              <td>Woolworths (Sushi Izu) - Erina Fair NSW</td>
+              <td>$240,000</td>
+              <td>約 $18,000 - $20,000</td>
+              <td>超市抽成制 (無固定租金)</td>
+              <td data-i18n="t_row3">中央海岸最大超市，高營業額旗艦點，每週自營淨利 $4,500+。</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-emerald" data-i18n="tag_street">街邊外帶</span></td>
+              <td>雪梨西區 (West Sydney) 獨立店</td>
+              <td>$88,000 + SAV</td>
+              <td>約 $10,000</td>
+              <td>固定租金約 $1,100/週</td>
+              <td data-i18n="t_row4">設備全歸買家，無 33% 抽成，自主性極高。</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-emerald" data-i18n="tag_street">街邊外帶</span></td>
+              <td>墨爾本 Hawthorn 5天外帶店</td>
+              <td>$95,000</td>
+              <td>約 $10,000</td>
+              <td>固定租金 $944/週 (含雜費)</td>
+              <td data-i18n="t_row5">僅開週一至五午市，租金極便宜，生活節奏佳。</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-blue" data-i18n="tag_train">迴轉壽司</span></td>
+              <td>雪梨北灘 (Northern Beaches) Sushi Train</td>
+              <td>$280,000</td>
+              <td>$18,355</td>
+              <td>租金 $2,621/週</td>
+              <td data-i18n="t_row6">每週淨利高達 $5,475，僅開中午 11-15 點，需較大資金。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 5: Due Diligence Questions for Son -->
+    <section id="questions">
+      <div class="section-header">
+        <div class="section-eyebrow" data-i18n="s5_eyebrow">Family Action Items</div>
+        <h2 class="section-title" data-i18n="s5_title">兒子在家庭會議上與賣方洽談時該問的 5 個核心問題</h2>
+        <div class="section-desc" data-i18n="s5_desc">這些問題能展現專業度，並保護家庭不會踏入投資陷阱：</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="checklist-item">
+            <div class="checklist-box">Q1</div>
+            <div>
+              <h4 style="font-size: 16px; margin-bottom: 6px;" data-i18n="q1_title">為什麼才開一週就急著轉讓？(Why selling after 1 week?)</h4>
+              <p style="font-size: 13.5px; color: var(--text-secondary);" data-i18n="q1_desc">
+                賣方是原本的加盟商因體力/家庭原因退出？還是總部專門建置新店轉賣的「代建商（Turnkey Developer）」？若是前者，必須誠實了解他這一週遇到了什麼意料之外的困難。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="checklist-item">
+            <div class="checklist-box">Q2</div>
+            <div>
+              <h4 style="font-size: 16px; margin-bottom: 6px;" data-i18n="q2_title">Coles 與 Snowfox 的專櫃合約還剩多久？(Master Lease Term)</h4>
+              <p style="font-size: 13.5px; color: var(--text-secondary);" data-i18n="q2_desc">
+                我們簽下的加盟合約是幾年？Coles 超市是否有條款可以提前終止壽司專櫃合作？若 Coles 重新招標或整修，加盟主的權益如何保障？
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="checklist-item">
+            <div class="checklist-box">Q3</div>
+            <div>
+              <h4 style="font-size: 16px; margin-bottom: 6px;" data-i18n="q3_title">每天丟棄 20 盒的損耗率是否能改善？(Waste Management)</h4>
+              <p style="font-size: 13.5px; color: var(--text-secondary);" data-i18n="q3_desc">
+                每天做 180 盒卻丟 20 盒，相當於超過 11% 的報廢率。是傍晚 Coles 人流不足？還是定價太高？總部是否有打折促銷（Markdown）機制以減少報廢？
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="checklist-item">
+            <div class="checklist-box">Q4</div>
+            <div>
+              <h4 style="font-size: 16px; margin-bottom: 6px;" data-i18n="q4_title">能否爭取 2-4 週的「試營運觀察期」再正式交割？(Trial Period)</h4>
+              <p style="font-size: 13.5px; color: var(--text-secondary);" data-i18n="q4_desc">
+                既然是剛開的新店，只看 5 天數字風險太大。能否先付小額訂金，讓父母進店實習/試營運 2 到 4 週，確認營業額真實且身體能適應，再支付剩餘款項？
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div data-i18n="footer_text">
+      Prepared for Jason & Family | Australian Sushi Business Investment Due Diligence & Educational Meeting | October 2026
+    </div>
+  </footer>
+
+  <script>
+    // i18n Dictionary
+    const translations = {
+      zh: {
+        nav_title: "澳洲壽司生意投資評估與教學",
+        hero_badge: "Family Business Investment Decision | 家庭商業投資決策指南",
+        hero_title: "如何客觀評估一間澳洲壽司店的投資價值？",
+        hero_desc: "本指南專門為全家討論設計，幫助我們用清晰的商業邏輯（CapEx vs OpEx、夫妻自營時薪模型、真實市場對比）評估當前剛開幕的 Coles 專櫃與全澳其他壽司生意的優劣。",
+        link_target: "1. 當前目標標的 (Target Deal)",
+        link_concept: "2. 商學院核心概念 (Core Concepts)",
+        link_market: "3. 全澳貨比三家 (Market Benchmarks)",
+        link_calc: "4. 互動收益試算機 (Calculator)",
+        link_questions: "5. 兒子向賣方提問題綱 (Due Diligence)",
+        s1_eyebrow: "Case Study #1",
+        s1_title: "目前評估中標的：Coles 超市內的 Snowfox 壽司專櫃",
+        s1_desc: "這是目前考慮接手的門市基礎數據與營運條件。",
+        tag_brand_new: "上週剛開幕 (Opened 1 Week Ago)",
+        target_name: "Snowfox Kiosk @ Coles Supermarket",
+        target_intro: "位於大型連鎖超市 Coles 內部的特許壽司吧。由 Coles 與總部提供櫃位、冰箱、冷庫與水電。",
+        label_asking: "收購總價 (Asking Price)",
+        label_royalty: "Coles + 總部抽成",
+        target_key_facts_title: "關鍵事實與合約條件 (Key Facts)",
+        fact_1: "<strong>包含加盟金</strong>：$70,000 中包含支付給總公司的 $19,250 加盟金。",
+        fact_2: "<strong>免付固定房租與水電</strong>：店內耗電極大的保冷櫃、展示台水電全由 Coles 負擔。",
+        fact_3: "<strong>自持設備</strong>：買方擁有炸爐、壓飯機（Rice Sheeter）、廚具，其餘大件歸 Coles。",
+        fact_4: "<strong>首週營運抽樣</strong>：開幕前 5 天營業額為 $6,768 未稅（日均 $1,353，外推週營收約 $9,500 - $10,400 含稅）。",
+        fact_5: "<strong>食材損耗</strong>：目前每天製作約 180 盒，隔日丟棄約 20 盒（每盒食材成本約 $2）。",
+        s2_eyebrow: "Financial Literacy for Son",
+        s2_title: "評估生意的三大商學院核心概念",
+        s2_desc: "為什麼抽成 33% 表面看起來高，但在商業上卻可能有它的合理性？請學習這三個概念：",
+        c1_title: "CapEx vs. OpEx 的取捨",
+        c1_p1: "<strong>CapEx (資本支出)</strong>：在澳洲開一間全新獨立店，做排煙、隔油池、水電、冷庫裝修，需要預付 <strong>$150,000 - $250,000 AUD</strong> 的巨款，且退租時需花數萬還原（Make Good）。",
+        c1_p2: "<strong>OpEx (營運支出)</strong>：Coles 把這筆 20 萬的裝修和水電全部幫你出掉，代價是從你的銷售中抽走 <strong>33%</strong>。",
+        c1_summary: "💡 結論：這 33% 實質上是用每週的浮動抽成，換取「零前期裝修負債、零退場賠償風險」。",
+        c2_title: "「自買工作」還是「資本投資」？",
+        c2_p1: "<strong>Buying a Job</strong>：如果一間店賺的錢，剛好只夠支付父母兩人每週辛苦站 40-50 小時的法定工資，那這不是純投資，而是花 $70,000 替自己買了一份穩定的勞動工作。",
+        c2_p2: "<strong>True Business</strong>：只有當營收扣除給員工（或給父母自己）合理的市場工資後，還能剩下額外的淨利潤（Net Profit），才算有真正的資本回報。",
+        c2_summary: "💡 討論焦點：父母投入的每小時勞動，實質換算下來時薪是多少？能否超越打工工資？",
+        c3_title: "「剛開一週就賣」的特殊風險",
+        c3_p1: "<strong>沒有歷史商譽 (Zero Goodwill)</strong>：這間店才開 7 天，沒有熟客、沒有一整年四季的報稅紀錄（BAS），不能當作成熟生意來買。",
+        c3_p2: "<strong>開幕蜜月期現象</strong>：新開幕第一週常有好奇客流，營業額可能暫時偏高；隨後可能面臨 15%-25% 的回落。",
+        c3_summary: "💡 核心問題：原店主為什麼才做了一週就要賣？是太累做不來？還是原本就是拓點代建商？",
+        s3_eyebrow: "Interactive Simulation",
+        s3_title: "家庭會議財務試算機：父母能賺多少錢？",
+        s3_desc: "調整以下參數，即時查看每週營收在不同水準時，父母兩人每週能拿到多少現金、等效時薪是多少、以及多快能回本。",
+        sim_controls_heading: "營運變數設定 (Operational Inputs)",
+        lbl_turnover: "每週未稅營業額 (Weekly Sales ex GST)",
+        tip_turnover: "目前開幕五天外推約 $9,500；一般成熟超市專櫃約 $11,000 - $14,000。",
+        lbl_royalty_slider: "Coles + 總部抽成比率",
+        lbl_cogs: "食材、耗損與包裝成本比率 (COGS)",
+        lbl_helper: "外聘兼職員工每週工時 (Helper Hours)",
+        tip_helper: "按澳洲法定外聘薪資每小時 $34 + 12% 退休金 ($38.08/hr) 扣除。",
+        lbl_parents_hours: "父母兩人每週合計自營工時 (Total Parents Hours)",
+        tip_hours: "如兩人各全職 40 小時 = 80 小時；若請外人分擔，父母工時可相應減少。",
+        res_weekly_net: "父母每週稅前淨得現金 (Parents Weekly Net Cash)",
+        row_gross: "每週未稅營業額",
+        row_royalty: "Coles + 總部抽成 (33%)",
+        row_cogs: "食材、包裝與耗損 (30%)",
+        row_helper: "外聘幫工支出",
+        row_fixed: "雜費（保險/POS/清潔耗材）",
+        row_wage_equiv: "父母等效時薪 (Hourly Rate per Parent)",
+        row_payback: "本金 $70,000 回本週期",
+        s4_eyebrow: "Market Due Diligence",
+        s4_title: "全澳壽司生意「貨比三家」真實行情清單",
+        s4_desc: "了解全澳其他地方正在賣的壽司店，幫助我們判斷 $70,000 的價格是否具有性價比。",
+        th_type: "類型",
+        th_location: "地點 / 品牌",
+        th_price: "開價 (Asking)",
+        th_turnover: "週營業額",
+        th_rent: "租金 / 抽成架構",
+        th_char: "商業特性與回報",
+        tag_target: "當前標的",
+        t_row1: "開價全澳最低，零裝修風險，但剛開 1 週無歷史報稅。",
+        tag_wws: "超市專櫃",
+        t_row2: "知名觀光區，已成熟營運，業主自營穩定。",
+        t_row3: "中央海岸最大超市，高營業額旗艦點，每週自營淨利 $4,500+。",
+        tag_street: "街邊外帶",
+        t_row4: "設備全歸買家，無 33% 抽成，自主性極高。",
+        t_row5: "僅開週一至五午市，租金極便宜，生活節奏佳。",
+        tag_train: "迴轉壽司",
+        t_row6: "每週淨利高達 $5,475，僅開中午 11-15 點，需較大資金。",
+        s5_eyebrow: "Family Action Items",
+        s5_title: "兒子在家庭會議上與賣方洽談時該問的 5 個核心問題",
+        s5_desc: "這些問題能展現專業度，並保護家庭不會踏入投資陷阱：",
+        q1_title: "為什麼才開一週就急著轉讓？(Why selling after 1 week?)",
+        q1_desc: "賣方是原本的加盟商因體力/家庭原因退出？還是總部專門建置新店轉賣的「代建商（Turnkey Developer）」？若是前者，必須誠實了解他這一週遇到了什麼意料之外的困難。",
+        q2_title: "Coles 與 Snowfox 的專櫃合約還剩多久？(Master Lease Term)",
+        q2_desc: "我們簽下的加盟合約是幾年？Coles 超市是否有條款可以提前終止壽司專櫃合作？若 Coles 重新招標或整修，加盟主的權益如何保障？",
+        q3_title: "每天丟棄 20 盒的損耗率是否能改善？(Waste Management)",
+        q3_desc: "每天做 180 盒卻丟 20 盒，相當於超過 11% 的報廢率。是傍晚 Coles 人流不足？還是定價太高？總部是否有打折促銷（Markdown）機制以減少報廢？",
+        q4_title: "能否爭取 2-4 週的「試營運觀察期」再正式交割？(Trial Period)",
+        q4_desc: "既然是剛開的新店，只看 5 天數字風險太大。能否先付小額訂金，讓父母進店實習/試營運 2 到 4 週，確認營業額真實且身體能適應，再支付剩餘款項？",
+        footer_text: "Prepared for Jason & Family | Australian Sushi Business Investment Due Diligence & Educational Meeting | October 2026"
+      },
+      en: {
+        nav_title: "Australian Sushi Business Evaluation Guide",
+        hero_badge: "Family Business Investment Decision | Due Diligence Guide",
+        hero_title: "How to Evaluate an Australian Sushi Business?",
+        hero_desc: "Designed for our family meeting, this guide teaches the core business fundamentals (CapEx vs OpEx, Owner-Operator wage models, market benchmarks) to evaluate the 1-week-old Coles Snowfox kiosk versus other options across Australia.",
+        link_target: "1. Target Deal (Coles Kiosk)",
+        link_concept: "2. Business Concepts for Son",
+        link_market: "3. Market Benchmarks",
+        link_calc: "4. Interactive Calculator",
+        link_questions: "5. Questions to Ask the Seller",
+        s1_eyebrow: "Case Study #1",
+        s1_title: "Current Target: Snowfox Kiosk inside Coles Supermarket",
+        s1_desc: "Key operational facts and terms for the proposed acquisition.",
+        tag_brand_new: "Opened 1 Week Ago (New Store)",
+        target_name: "Snowfox Kiosk @ Coles Supermarket",
+        target_intro: "A franchise sushi bar situated inside Coles. Coles and franchisor provide the premises, coolroom, display fridges, water, and power.",
+        label_asking: "Asking Price",
+        label_royalty: "Coles + Franchisor Royalty",
+        target_key_facts_title: "Key Contractual Facts",
+        fact_1: "<strong>Includes Franchise Fee</strong>: $70,000 includes the $19,250 initial franchise fee paid to the franchisor.",
+        fact_2: "<strong>Zero Rent & Utility Bills</strong>: Heavy commercial refrigeration, water, and electricity are 100% covered by Coles.",
+        fact_3: "<strong>Equipment Ownership</strong>: Buyer owns fryer, rice sheeter, and kitchenware. Major fitout/fridges belong to Coles.",
+        fact_4: "<strong>Initial 5-Day Sample</strong>: Generated $6,768 ex-GST in first 5 days ($1,353/day avg, projecting ~$9,500 - $10,400/wk inc-GST).",
+        fact_5: "<strong>Food Waste Observation</strong>: Makes ~180 boxes/day; discards ~20 boxes the next morning (~$2 ingredient cost each).",
+        s2_eyebrow: "Financial Literacy for Son",
+        s2_title: "3 Core Business Concepts Every Buyer Must Know",
+        s2_desc: "Why 33% royalty sounds high at first glance, but makes strategic sense under certain conditions:",
+        c1_title: "CapEx vs. OpEx Tradeoff",
+        c1_p1: "<strong>CapEx (Capital Expenditure)</strong>: Building an independent sushi shop requires <strong>$150,000 - $250,000 AUD</strong> upfront for exhaust hoods, grease traps, three-phase power, and coolrooms, plus costly 'Make Good' demolition upon lease end.",
+        c1_p2: "<strong>OpEx (Operating Expenditure)</strong>: Coles absorbs this $200k+ building cost and power bills entirely, in exchange for taking <strong>33%</strong> of your gross sales.",
+        c1_summary: "💡 Takeaway: The 33% cut is essentially trading variable revenue for zero debt and zero lease demolition liability.",
+        c2_title: "Buying a Job vs. True Investment",
+        c2_p1: "<strong>Buying a Job</strong>: If the net profit only matches what parents would earn working 40-50 hours/week at standard wages, it is not a passive investment—it is paying $70,000 to secure self-employment.",
+        c2_p2: "<strong>True Business</strong>: A true business generates net profits ABOVE market wages paid to owners or replacement staff.",
+        c2_summary: "💡 Discussion Goal: What is parents' effective hourly return? Does it exceed the standard casual rate of $34+/hr?",
+        c3_title: "The 1-Week-Old Greenfield Risk",
+        c3_p1: "<strong>Zero Goodwill</strong>: Trading for only 7 days means there are no loyal repeat customers and no historical BAS tax returns to rely upon.",
+        c3_p2: "<strong>The Honeymoon Effect</strong>: Week 1 sales often reflect novelty foot traffic, which can taper off by 15-25% once normal patterns settle.",
+        c3_summary: "💡 Critical Question: Why is the seller divesting after just 1 week? Exhaustion or a professional turnkey flipper?",
+        s3_eyebrow: "Interactive Simulation",
+        s3_title: "Financial Simulator: How Much Do Parents Actually Take Home?",
+        s3_desc: "Adjust the levers below to see parents' net weekly cash, equivalent hourly rate, and payback timeline across different sales volumes.",
+        sim_controls_heading: "Operational Inputs",
+        lbl_turnover: "Weekly Sales (ex GST)",
+        tip_turnover: "Currently tracking ~$9,500; mature supermarket kiosks average $11,000 - $14,000.",
+        lbl_royalty_slider: "Coles + Franchisor Royalty",
+        lbl_cogs: "COGS, Packaging & Waste %",
+        lbl_helper: "Part-time Helper Hours / Week",
+        tip_helper: "Deducted at legal casual rate: $34/hr + 12% super ($38.08/hr total).",
+        lbl_parents_hours: "Total Combined Parents Hours / Week",
+        tip_hours: "e.g., both parents working 40 hrs each = 80 total hours.",
+        res_weekly_net: "Parents Weekly Net Cash (Pre-Tax)",
+        row_gross: "Weekly Gross Sales (ex GST)",
+        row_royalty: "Coles + Franchisor Cut (33%)",
+        row_cogs: "COGS & Packaging (30%)",
+        row_helper: "External Helper Wages",
+        row_fixed: "Misc Store Expenses (POS/Consumables)",
+        row_wage_equiv: "Equivalent Hourly Rate per Parent",
+        row_payback: "Payback Period on $70k Capital",
+        s4_eyebrow: "Market Due Diligence",
+        s4_title: "Cross-Market Comparison: Current Listings in Australia",
+        s4_desc: "Real data from Australian business brokers to benchmark whether $70,000 is fair value.",
+        th_type: "Category",
+        th_location: "Location / Brand",
+        th_price: "Asking Price",
+        th_turnover: "Weekly Takings",
+        th_rent: "Rent / Royalty Structure",
+        th_char: "Business Characteristics",
+        tag_target: "Target Deal",
+        t_row1: "Lowest entry price in Australia, zero fitout debt, but brand new with no BAS history.",
+        tag_wws: "Supermarket Kiosk",
+        t_row2: "Touristy coastal location inside Woolworths, proven trading, stable owner-operator.",
+        t_row3: "Central Coast's largest Woolworths, top revenue performer, nets $4,500+/week.",
+        tag_street: "Street Takeaway",
+        t_row4: "Buyer owns 100% equipment, no 33% royalty, complete operational freedom.",
+        t_row5: "Operates Mon-Fri lunch only, ultra-low rent, balanced lifestyle.",
+        tag_train: "Sushi Train",
+        t_row6: "High net profit ($5,475/wk), trading lunch only (11am-3pm), requires larger capital.",
+        s5_eyebrow: "Family Action Items",
+        s5_title: "5 Sharp Questions for Son to Ask the Seller & Franchisor",
+        s5_desc: "Ask these to protect the family from blind spots before signing any contract:",
+        q1_title: "Why sell after just one week? (Real Divestment Reason)",
+        q1_desc: "Is the seller overwhelmed by the early morning prep and physical demand, or are they a turnkey developer taking a quick arbitrage fee? Uncover their true bottleneck.",
+        q2_title: "What is the head lease term with Coles? (Master Lease Tenure)",
+        q2_desc: "How many years are guaranteed? Does Coles hold unilateral rights to terminate or relocate kiosks? What happens if Coles refurbishes the supermarket?",
+        q3_title: "How to eliminate the 20-box daily food waste? (Waste Control)",
+        q3_desc: "Discarding 20 boxes out of 180 is an 11% waste rate. Is it evening traffic drop-off or pricing? Does franchisor allow end-of-day markdowns to capture revenue?",
+        q4_title: "Can we negotiate a 2-4 week Trial Period before settlement? (Trial Run)",
+        q4_desc: "Buying a 7-day-old store carries high uncertainty. Can parents work inside for a 2-4 week trial under a small holding deposit before transferring the full $70k?",
+        footer_text: "Prepared for Jason & Family | Australian Sushi Business Investment Due Diligence & Educational Meeting | October 2026"
+      }
+    };
+
+    let currentLang = 'zh';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.body.className = lang === 'zh' ? 'lang-zh' : '';
+      const dict = translations[lang];
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.innerHTML = dict[key];
+        }
+      });
+
+      document.getElementById('langLabel').textContent = lang === 'zh' ? 'English 切換' : '切換為繁體中文';
+      updateSimulator();
+    }
+
+    document.getElementById('langToggle').addEventListener('click', () => {
+      setLanguage(currentLang === 'zh' ? 'en' : 'zh');
+    });
+
+    // Simulator Logic
+    const inputTurnover = document.getElementById('inputTurnover');
+    const inputRoyalty = document.getElementById('inputRoyalty');
+    const inputCogs = document.getElementById('inputCogs');
+    const inputHelper = document.getElementById('inputHelper');
+    const inputParentsHours = document.getElementById('inputParentsHours');
+
+    function updateSimulator() {
+      const turnover = parseFloat(inputTurnover.value);
+      const royaltyPct = parseFloat(inputRoyalty.value) / 100;
+      const cogsPct = parseFloat(inputCogs.value) / 100;
+      const helperHours = parseFloat(inputHelper.value);
+      const parentsHours = parseFloat(inputParentsHours.value);
+
+      document.getElementById('valTurnover').textContent = `$${turnover.toLocaleString()}`;
+      document.getElementById('valRoyalty').textContent = `${inputRoyalty.value}%`;
+      document.getElementById('valCogs').textContent = `${inputCogs.value}%`;
+      document.getElementById('valHelper').textContent = `${helperHours} ${currentLang === 'zh' ? '小時' : 'hrs'}`;
+      document.getElementById('valParentsHours').textContent = `${parentsHours} ${currentLang === 'zh' ? '小時' : 'hrs'}`;
+
+      // Financials
+      const royaltyFee = turnover * royaltyPct;
+      const cogsFee = turnover * cogsPct;
+      const helperWageRate = 34 * 1.12; // $38.08
+      const helperCost = helperHours * helperWageRate;
+      const fixedCost = 400; // Misc pos/insurance
+
+      const weeklyNet = turnover - royaltyFee - cogsFee - helperCost - fixedCost;
+      const annualNet = weeklyNet * 52;
+      const hourlyRate = parentsHours > 0 ? (weeklyNet / parentsHours) : 0;
+      const capital = 70000;
+      const paybackMonths = weeklyNet > 0 ? (capital / (weeklyNet * 4.33)) : 999;
+
+      // Update UI
+      document.getElementById('resWeeklyNet').textContent = `$${Math.round(weeklyNet).toLocaleString()}`;
+      document.getElementById('resAnnualNet').textContent = currentLang === 'zh' 
+        ? `年化家庭總收入：$${Math.round(annualNet).toLocaleString()} AUD / 年`
+        : `Annual Household Earnings: $${Math.round(annualNet).toLocaleString()} AUD / yr`;
+
+      document.getElementById('rowGross').textContent = `$${Math.round(turnover).toLocaleString()}`;
+      document.getElementById('rowRoyalty').textContent = `-$${Math.round(royaltyFee).toLocaleString()}`;
+      document.getElementById('rowCogs').textContent = `-$${Math.round(cogsFee).toLocaleString()}`;
+      document.getElementById('rowHelper').textContent = `-$${Math.round(helperCost).toLocaleString()}`;
+      document.getElementById('resHourlyRate').textContent = `$${hourlyRate.toFixed(2)} / hr`;
+      document.getElementById('resPayback').textContent = paybackMonths < 60 
+        ? `${paybackMonths.toFixed(1)} ${currentLang === 'zh' ? '個月' : 'months'}`
+        : `${currentLang === 'zh' ? '超長 (>5年)' : '> 5 years'}`;
+
+      // Dynamic insight message
+      const insightEl = document.getElementById('simInsight');
+      if (weeklyNet <= 1200) {
+        insightEl.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+        insightEl.style.background = 'rgba(239, 68, 68, 0.1)';
+        insightEl.style.color = '#fca5a5';
+        insightEl.innerHTML = currentLang === 'zh'
+          ? `⚠️ <strong>警示</strong>：目前營收偏低，夫妻投入 ${parentsHours} 小時換算時薪僅 $${hourlyRate.toFixed(2)}，低於澳洲法定最低工資，需嚴控成本或提高銷量。`
+          : `⚠️ <strong>Warning</strong>: Net return is weak. Effective hourly rate ($${hourlyRate.toFixed(2)}/hr) is below Australian minimum wage ($24.97). Volume must improve.`;
+      } else if (hourlyRate >= 35) {
+        insightEl.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+        insightEl.style.background = 'rgba(16, 185, 129, 0.1)';
+        insightEl.style.color = '#a7f3d0';
+        insightEl.innerHTML = currentLang === 'zh'
+          ? `✅ <strong>健康回報</strong>：等效時薪 $${hourlyRate.toFixed(2)}，優於市場受聘打工工資，年化收益約 $${Math.round(annualNet).toLocaleString()} AUD，約 ${paybackMonths.toFixed(1)} 個月即可回本。`
+          : `✅ <strong>Solid Return</strong>: Effective wage of $${hourlyRate.toFixed(2)}/hr beats standard market employment wages, yielding ~$${Math.round(annualNet).toLocaleString()} AUD/yr with ~${paybackMonths.toFixed(1)} months capital payback.`;
+      } else {
+        insightEl.style.borderColor = 'rgba(245, 158, 11, 0.4)';
+        insightEl.style.background = 'rgba(245, 158, 11, 0.1)';
+        insightEl.style.color = '#fde68a';
+        insightEl.innerHTML = currentLang === 'zh'
+          ? `ℹ️ <strong>持平水準</strong>：等效時薪約 $${hourlyRate.toFixed(2)}，與澳洲一般餐飲兼職打工相當。主要價值在於自雇穩定性與商業自主。`
+          : `ℹ️ <strong>Fair Level</strong>: Effective wage of $${hourlyRate.toFixed(2)}/hr roughly mirrors typical casual hospitality wages. Value lies in employment self-reliance.`;
+      }
+    }
+
+    [inputTurnover, inputRoyalty, inputCogs, inputHelper, inputParentsHours].forEach(input => {
+      input.addEventListener('input', updateSimulator);
+    });
+
+    // Init
+    updateSimulator();
+  </script>
+</body>
+</html>
