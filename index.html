@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Australian Sushi Business Evaluation | 家庭會議評估指南</title>
+  <title>Australian Sushi Business Evaluation | Family Meeting Guide</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -674,20 +674,21 @@
     }
   </style>
 </head>
-<body class="lang-zh">
+<body>
 
   <!-- Password Gate Overlay -->
   <div class="lock-overlay" id="lockOverlay">
     <div class="lock-card">
       <div class="lock-icon">🔒</div>
-      <h2 class="lock-title" id="lockTitle">家庭會議專屬訪問保護</h2>
+      <h2 class="lock-title" id="lockTitle">Family Access Protected</h2>
       <p class="lock-desc" id="lockDesc">
-        此頁面包含澳洲壽司投資評估與財務模擬，請輸入約定密碼解鎖瀏覽。<br>
-        <span style="font-size: 12px; color: #64748b;">Family Access Protected. Please enter password to continue.</span>
+        Australian Sushi Business Investment Evaluation & Financial Simulation.<br>
+        Please enter the family PIN to unlock.<br>
+        <span style="font-size: 12px; color: #64748b;">家庭會議專屬保護，請輸入約定密碼解鎖</span>
       </p>
-      <input type="password" id="passInput" class="lock-input" placeholder="請輸入密碼 / Password" autofocus>
-      <button class="lock-btn" id="unlockBtn">解鎖瀏覽 (Unlock Access)</button>
-      <div class="lock-error" id="lockError">密碼錯誤，請重新輸入 (Incorrect Password)</div>
+      <input type="password" id="passInput" class="lock-input" placeholder="Enter PIN / 請輸入密碼" autofocus>
+      <button class="lock-btn" id="unlockBtn">Unlock Access (解鎖瀏覽)</button>
+      <div class="lock-error" id="lockError">Incorrect PIN. Please try again. (密碼錯誤)</div>
     </div>
   </div>
 
@@ -695,12 +696,12 @@
   <header>
     <div class="brand">
       <span class="brand-tag">Family Meeting</span>
-      <span class="brand-title" data-i18n="nav_title">澳洲壽司生意投資評估與教學</span>
+      <span class="brand-title" data-i18n="nav_title">Australian Sushi Business Evaluation Guide</span>
     </div>
     <div class="nav-actions">
-      <button class="lang-btn" id="lockBtn" title="重新鎖定頁面" style="padding: 8px 12px;">🔒 重新鎖定</button>
+      <button class="lang-btn" id="lockBtn" title="Lock Page" style="padding: 8px 12px;">🔒 Lock</button>
       <button class="lang-btn" id="langToggle">
-        <span id="langLabel">English / 中文切換</span>
+        <span id="langLabel">切換為繁體中文 (Traditional Chinese)</span>
       </button>
     </div>
   </header>
@@ -1249,7 +1250,7 @@
       }
     };
 
-    let currentLang = 'zh';
+    let currentLang = 'en';
 
     function setLanguage(lang) {
       currentLang = lang;
@@ -1263,7 +1264,14 @@
         }
       });
 
-      document.getElementById('langLabel').textContent = lang === 'zh' ? 'English 切換' : '切換為繁體中文';
+      document.getElementById('langLabel').textContent = lang === 'en' ? '切換為繁體中文 (Traditional Chinese)' : 'English (切換為英文)';
+      
+      // Update Lock gate text
+      if (document.getElementById('lockTitle')) {
+        document.getElementById('lockTitle').textContent = lang === 'en' ? 'Family Access Protected' : '家庭會議專屬訪問保護';
+        document.getElementById('lockBtn').innerHTML = lang === 'en' ? '🔒 Lock' : '🔒 重新鎖定';
+      }
+
       updateSimulator();
     }
 
@@ -1392,6 +1400,7 @@
       checkUnlockStatus();
     });
 
+    setLanguage('en');
     checkUnlockStatus();
   </script>
 </body>
