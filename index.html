@@ -224,6 +224,69 @@
       border-color: var(--accent-blue);
     }
 
+    /* Language Switcher & Direct Share Buttons */
+    .lang-switcher-group {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .lang-opt-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .lang-opt-btn:hover {
+      color: #fff;
+    }
+
+    .lang-opt-btn.active {
+      background: linear-gradient(135deg, #0284c7, #0ea5e9);
+      color: #fff;
+      box-shadow: 0 1px 4px rgba(2, 132, 199, 0.4);
+    }
+
+    .btn-share-link {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #38bdf8;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-share-link:hover {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: #38bdf8;
+      color: #fff;
+    }
+
+    .btn-share-link.copied {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: #10b981;
+      color: #34d399;
+    }
+
     /* Sticky Tab Navigation Bar */
     .tabs-nav-bar {
       position: sticky;
@@ -1003,8 +1066,13 @@
       <span class="brand-title" data-i18n="brand_title">Australian Sushi Business Evaluation</span>
     </div>
     <div class="nav-actions">
-      <button class="btn-action" id="langToggle">
-        <span id="langLabel">中文 (繁體)</span>
+      <div class="lang-switcher-group">
+        <button class="lang-opt-btn" id="btnLangEn" onclick="switchLanguage('en')">EN (English)</button>
+        <button class="lang-opt-btn" id="btnLangZh" onclick="switchLanguage('zh')">中文 (繁體)</button>
+      </div>
+      <button class="btn-share-link" id="btnShareLink" onclick="copyCurrentShareUrl()" title="複製此語言版本專屬 URL / Copy dedicated URL for this language">
+        <span id="shareLinkIcon">🔗</span>
+        <span id="shareLinkLabel">Copy English Link</span>
       </button>
       <button class="btn-action" id="lockBtn">
         <span id="lockBtnText">🔒 Lock</span>
@@ -2518,6 +2586,21 @@
     let currentModelKey = 'coles';
     let currentLang = 'en';
 
+    function updateUrlState(lang, tabId) {
+      try {
+        const url = new URL(window.location.href);
+        if (lang) {
+          url.searchParams.set('lang', lang);
+        }
+        if (tabId) {
+          url.hash = tabId;
+        }
+        history.replaceState(null, null, url.toString());
+      } catch (e) {
+        if (tabId) location.hash = tabId;
+      }
+    }
+
     // Tab Switching Function
     function switchTab(tabId) {
       document.querySelectorAll('.tab-panel').forEach(panel => {
@@ -2537,7 +2620,7 @@
         navBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
-      history.replaceState(null, null, `#${tabId}`);
+      updateUrlState(null, tabId);
     }
 
     document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -2597,11 +2680,15 @@
       });
     });
 
-    // Language Toggle
-    function setLanguage(lang) {
+    // Language Switcher & Dedicated URL Syncer
+    function switchLanguage(lang) {
+      setLanguage(lang, true);
+    }
+
+    function setLanguage(lang, updateUrl = false) {
       currentLang = lang;
       document.body.className = lang === 'zh' ? 'lang-zh' : '';
-      const dict = translations[lang];
+      const dict = translations[lang] || translations.en;
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -2610,8 +2697,26 @@
         }
       });
 
-      // Update lang button label & Lock modal
-      document.getElementById('langLabel').textContent = lang === 'en' ? '切換為中文 (繁體)' : 'Switch to English';
+      // Update segmented pill active state
+      const btnEn = document.getElementById('btnLangEn');
+      const btnZh = document.getElementById('btnLangZh');
+      if (btnEn && btnZh) {
+        if (lang === 'en') {
+          btnEn.classList.add('active');
+          btnZh.classList.remove('active');
+        } else {
+          btnZh.classList.add('active');
+          btnEn.classList.remove('active');
+        }
+      }
+
+      // Update share link button label
+      const shareLabel = document.getElementById('shareLinkLabel');
+      if (shareLabel) {
+        shareLabel.textContent = lang === 'zh' ? '複製中文版專屬連結' : 'Copy English Link';
+      }
+
+      // Update Lock modal
       document.getElementById('lockBtnText').textContent = lang === 'en' ? '🔒 Lock' : '🔒 鎖定';
       document.getElementById('lockModalTitle').textContent = dict.lock_modal_title;
       document.getElementById('lockModalDesc').textContent = dict.lock_modal_desc;
@@ -2620,7 +2725,9 @@
 
       // Update active model tag
       const p = modelPresets[currentModelKey];
-      document.getElementById('dispModelTag').textContent = lang === 'zh' ? p.nameZh : p.nameEn;
+      if (p) {
+        document.getElementById('dispModelTag').textContent = lang === 'zh' ? p.nameZh : p.nameEn;
+      }
 
       // Update placeholder
       if (lang === 'zh') {
@@ -2641,12 +2748,42 @@
         topicSelect.appendChild(el);
       });
 
+      if (updateUrl) {
+        updateUrlState(lang, null);
+      }
+
       updateSimulator();
     }
 
-    document.getElementById('langToggle').addEventListener('click', () => {
-      setLanguage(currentLang === 'zh' ? 'en' : 'zh');
-    });
+    function copyCurrentShareUrl() {
+      const activeTab = document.querySelector('.tab-panel.active')?.id || 'tab-overview';
+      let urlToCopy = '';
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.set('lang', currentLang);
+        url.hash = activeTab;
+        urlToCopy = url.toString();
+      } catch (e) {
+        urlToCopy = `${window.location.origin}${window.location.pathname}?lang=${currentLang}#${activeTab}`;
+      }
+
+      const btn = document.getElementById('btnShareLink');
+      const label = document.getElementById('shareLinkLabel');
+      const originalText = label ? label.textContent : '';
+
+      navigator.clipboard.writeText(urlToCopy).then(() => {
+        if (btn && label) {
+          btn.classList.add('copied');
+          label.textContent = currentLang === 'zh' ? '✓ 已複製！可直接傳給老婆/家人' : '✓ Copied! Ready to share with family';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            label.textContent = originalText;
+          }, 2500);
+        }
+      }).catch(() => {
+        prompt(currentLang === 'zh' ? '請複製此專用連結：' : 'Copy this dedicated link:', urlToCopy);
+      });
+    }
 
     // Financial Simulator Inputs
     const inputInitialCapital = document.getElementById('inputInitialCapital');
@@ -2976,6 +3113,23 @@
       checkUnlockStatus();
     });
 
+    // Parse URL on startup (Dedicated Language & Active Tab)
+    const searchParams = new URLSearchParams(window.location.search);
+    const langParam = searchParams.get('lang');
+    let initLang = 'en';
+
+    if (langParam === 'zh' || langParam === 'zh-TW' || langParam === 'zh-CN') {
+      initLang = 'zh';
+    } else if (langParam === 'en') {
+      initLang = 'en';
+    } else if (window.location.pathname.toLowerCase().includes('/zh') || window.location.pathname.endsWith('zh.html')) {
+      initLang = 'zh';
+    }
+
+    setLanguage(initLang, false);
+    loadModelPreset('coles');
+    checkUnlockStatus();
+
     // Check hash on load
     window.addEventListener('load', () => {
       const hash = window.location.hash.replace('#', '');
@@ -2984,10 +3138,18 @@
       }
     });
 
-    // Initial setup (Default English)
-    setLanguage('en');
-    loadModelPreset('coles');
-    checkUnlockStatus();
+    // Handle browser back/forward history navigation
+    window.addEventListener('popstate', () => {
+      const sp = new URLSearchParams(window.location.search);
+      const lp = sp.get('lang');
+      if (lp && (lp === 'zh' || lp === 'en') && lp !== currentLang) {
+        setLanguage(lp, false);
+      }
+      const hash = window.location.hash.replace('#', '');
+      if (hash && document.getElementById(hash)) {
+        switchTab(hash);
+      }
+    });
   </script>
 </body>
 </html>
