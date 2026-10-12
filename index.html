@@ -672,6 +672,176 @@
       border-color: var(--accent-blue);
       color: var(--text-primary);
     }
+
+    /* Q&A Enhanced Styling */
+    .qa-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 20px;
+      transition: all 0.2s ease;
+    }
+
+    .qa-card:hover {
+      border-color: #475569;
+    }
+
+    .qa-q-header {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .badge-q {
+      background: rgba(249, 115, 22, 0.2);
+      color: var(--accent-coral);
+      font-weight: 800;
+      font-size: 13px;
+      padding: 3px 10px;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .qa-q-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    .qa-a-box {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .qa-flags {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 700px) {
+      .qa-flags {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .flag-card {
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+
+    .flag-green {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: #a7f3d0;
+    }
+
+    .flag-red {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: #fca5a5;
+    }
+
+    /* Inquiry Form */
+    .inquiry-container {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid #38bdf8;
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      margin-top: 40px;
+      box-shadow: var(--shadow);
+    }
+
+    .inquiry-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 36px;
+    }
+
+    @media (max-width: 860px) {
+      .inquiry-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 14px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: var(--radius-sm);
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 13px 24px;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-submit:hover {
+      opacity: 0.9;
+    }
+
+    .direct-email-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 14px;
+    }
+
+    .direct-email-btn:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -998,57 +1168,177 @@
     <!-- Section 5: Due Diligence Questions for Son -->
     <section id="questions">
       <div class="section-header">
-        <div class="section-eyebrow" data-i18n="s5_eyebrow">Family Action Items</div>
-        <h2 class="section-title" data-i18n="s5_title">兒子在家庭會議上與賣方洽談時該問的 5 個核心問題</h2>
-        <div class="section-desc" data-i18n="s5_desc">這些問題能展現專業度，並保護家庭不會踏入投資陷阱：</div>
+        <div class="section-eyebrow" data-i18n="s5_eyebrow">Strategic Deal Due Diligence</div>
+        <h2 class="section-title" data-i18n="s5_title">5 Core Due Diligence Q&As for Son & Investors</h2>
+        <div class="section-desc" data-i18n="s5_desc">Master these questions and strategic answers to protect our family investment:</div>
       </div>
 
-      <div class="grid-2">
-        <div class="card">
-          <div class="checklist-item">
-            <div class="checklist-box">Q1</div>
-            <div>
-              <h4 style="font-size: 16px; margin-bottom: 6px;" data-i18n="q1_title">為什麼才開一週就急著轉讓？(Why selling after 1 week?)</h4>
-              <p style="font-size: 13.5px; color: var(--text-secondary);" data-i18n="q1_desc">
-                賣方是原本的加盟商因體力/家庭原因退出？還是總部專門建置新店轉賣的「代建商（Turnkey Developer）」？若是前者，必須誠實了解他這一週遇到了什麼意料之外的困難。
-              </p>
+      <!-- 5 Q&A Cards -->
+      <div class="qa-grid">
+
+        <!-- Q&A 1 -->
+        <div class="qa-card">
+          <div class="qa-q-header">
+            <span class="badge-q">Q1</span>
+            <div class="qa-q-title" data-i18n="qa1_q">Why is the seller exiting after trading for only 1 week?</div>
+          </div>
+          <div class="qa-a-box">
+            <p data-i18n="qa1_a">
+              <strong>Strategic Analysis</strong>: A business does not normally sell in week one unless it is a pre-arranged "Turnkey Development" or the operator faced an overwhelming operational shock. We must determine whether the problem is the <em>location's footfall</em> or purely <em>the operator's personal endurance</em>.
+            </p>
+            <div class="qa-flags">
+              <div class="flag-card flag-green" data-i18n="qa1_green">
+                <strong>🟢 Green Flag (Acceptable)</strong>: The seller is a serial franchise builder whose business model is taking initial handover risks, or an investor with zero kitchen experience who realized they dislike 5:30 AM prep.
+              </div>
+              <div class="flag-card flag-red" data-i18n="qa1_red">
+                <strong>🔴 Red Flag (Walk Away)</strong>: The seller realizes Coles customer traffic consists only of raw grocery shoppers who do not buy ready-to-eat sushi, rendering break-even impossible.
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="card">
-          <div class="checklist-item">
-            <div class="checklist-box">Q2</div>
-            <div>
-              <h4 style="font-size: 16px; margin-bottom: 6px;" data-i18n="q2_title">Coles 與 Snowfox 的專櫃合約還剩多久？(Master Lease Term)</h4>
-              <p style="font-size: 13.5px; color: var(--text-secondary);" data-i18n="q2_desc">
-                我們簽下的加盟合約是幾年？Coles 超市是否有條款可以提前終止壽司專櫃合作？若 Coles 重新招標或整修，加盟主的權益如何保障？
-              </p>
+        <!-- Q&A 2 -->
+        <div class="qa-card">
+          <div class="qa-q-header">
+            <span class="badge-q">Q2</span>
+            <div class="qa-q-title" data-i18n="qa2_q">What is the remaining tenure of the Master Agreement between Coles and Snowfox?</div>
+          </div>
+          <div class="qa-a-box">
+            <p data-i18n="qa2_a">
+              <strong>Strategic Analysis</strong>: You are a sub-licensee inside Coles. Even if your franchise agreement is for 5 years, if Coles' head contract with Snowfox expires in 6 months or Coles holds unilateral redevelopment rights, your tenure is in jeopardy.
+            </p>
+            <div class="qa-flags">
+              <div class="flag-card flag-green" data-i18n="qa2_green">
+                <strong>🟢 Green Flag</strong>: Coles and franchisor hold an active multi-year national contract with at least 3-5 years guaranteed tenure and clear relocation compensation provisions.
+              </div>
+              <div class="flag-card flag-red" data-i18n="qa2_red">
+                <strong>🔴 Red Flag</strong>: Supermarket is scheduled for a major remodel within 12 months, or Coles reserves the right to terminate kiosk operators with only 30 days notice.
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="card">
-          <div class="checklist-item">
-            <div class="checklist-box">Q3</div>
-            <div>
-              <h4 style="font-size: 16px; margin-bottom: 6px;" data-i18n="q3_title">每天丟棄 20 盒的損耗率是否能改善？(Waste Management)</h4>
-              <p style="font-size: 13.5px; color: var(--text-secondary);" data-i18n="q3_desc">
-                每天做 180 盒卻丟 20 盒，相當於超過 11% 的報廢率。是傍晚 Coles 人流不足？還是定價太高？總部是否有打折促銷（Markdown）機制以減少報廢？
-              </p>
+        <!-- Q&A 3 -->
+        <div class="qa-card">
+          <div class="qa-q-header">
+            <span class="badge-q">Q3</span>
+            <div class="qa-q-title" data-i18n="qa3_q">How can we reduce the daily 20-box food waste (~11% loss rate)?</div>
+          </div>
+          <div class="qa-a-box">
+            <p data-i18n="qa3_a">
+              <strong>Strategic Analysis</strong>: Discarding 20 boxes daily at $2 raw cost equals ~$280/wk down the drain (and lost retail sales of ~$1,500/wk). We need to know if the franchisor permits late-afternoon dynamic markdowns (e.g., $10 boxes after 4:30 PM).
+            </p>
+            <div class="qa-flags">
+              <div class="flag-card flag-green" data-i18n="qa3_green">
+                <strong>🟢 Green Flag</strong>: POS system allows end-of-day markdown stickers, converting surplus rolls into pure cash flow rather than dumpster waste.
+              </div>
+              <div class="flag-card flag-red" data-i18n="qa3_red">
+                <strong>🔴 Red Flag</strong>: Franchisor strictly prohibits discounting to protect brand image, forcing full disposal and eroding owner profit.
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="card">
-          <div class="checklist-item">
-            <div class="checklist-box">Q4</div>
-            <div>
-              <h4 style="font-size: 16px; margin-bottom: 6px;" data-i18n="q4_title">能否爭取 2-4 週的「試營運觀察期」再正式交割？(Trial Period)</h4>
-              <p style="font-size: 13.5px; color: var(--text-secondary);" data-i18n="q4_desc">
-                既然是剛開的新店，只看 5 天數字風險太大。能否先付小額訂金，讓父母進店實習/試營運 2 到 4 週，確認營業額真實且身體能適應，再支付剩餘款項？
-              </p>
+        <!-- Q&A 4 -->
+        <div class="qa-card">
+          <div class="qa-q-header">
+            <span class="badge-q">Q4</span>
+            <div class="qa-q-title" data-i18n="qa4_q">Can we negotiate a 2 to 4-week "Trial Period" before final settlement?</div>
+          </div>
+          <div class="qa-a-box">
+            <p data-i18n="qa4_a">
+              <strong>Strategic Analysis</strong>: Because the store has zero BAS tax history, paying 100% upfront on day 7 is excessive risk. The standard protective tactic is placing a 10% holding deposit in a solicitor's trust account while parents work inside for a 2-4 week trial.
+            </p>
+            <div class="qa-flags">
+              <div class="flag-card flag-green" data-i18n="qa4_green">
+                <strong>🟢 Green Flag</strong>: Seller welcomes parents into the kitchen for hands-on trial and training, guaranteeing average sales verification before full fund release.
+              </div>
+              <div class="flag-card flag-red" data-i18n="qa4_red">
+                <strong>🔴 Red Flag</strong>: Seller rushes an immediate unconditional contract and refuses to let buyers observe real daily register transactions.
+              </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Q&A 5 -->
+        <div class="qa-card">
+          <div class="qa-q-header">
+            <span class="badge-q">Q5</span>
+            <div class="qa-q-title" data-i18n="qa5_q">What is the exact daily physical schedule required for two operators?</div>
+          </div>
+          <div class="qa-a-box">
+            <p data-i18n="qa5_a">
+              <strong>Strategic Analysis</strong>: Supermarket sushi requires fresh morning rollout. Knowing whether rice cookers and sheeters can be prepped in 1.5 hours vs. 3.5 hours dictates whether parents work a sustainable 7-8 hour day or an exhausting 12-hour grind.
+            </p>
+            <div class="qa-flags">
+              <div class="flag-card flag-green" data-i18n="qa5_green">
+                <strong>🟢 Green Flag</strong>: Automatic Rice Sheeter and Roll Cutter allow 180 boxes to be completed by 10:30 AM with steady afternoon maintenance.
+              </div>
+              <div class="flag-card flag-red" data-i18n="qa5_red">
+                <strong>🔴 Red Flag</strong>: Heavy manual rolling required due to faulty machines, requiring 5:00 AM to 6:30 PM presence without breaks.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Investor Inquiry Form (Sends instant email to Jason) -->
+      <div class="inquiry-container" id="inquiry-box">
+        <div class="inquiry-grid">
+          <div>
+            <span class="tag tag-blue" style="margin-bottom: 12px;" data-i18n="inq_badge">Direct Communication</span>
+            <h3 style="font-size: 24px; color: #fff; margin-bottom: 12px;" data-i18n="inq_title">Have Questions or Want to Co-Invest?</h3>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;" data-i18n="inq_desc">
+              Whether you are an overseas family member, co-investor, or advisor, submit your question here. Jason will be notified instantly via email (<code style="color: #38bdf8;">jason660519@gmail.com</code>) to provide prompt answers.
+            </p>
+            <div style="background: rgba(15, 23, 42, 0.6); padding: 16px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.08);">
+              <div style="font-size: 13px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;" data-i18n="inq_owner_label">Project Owner & Contact</div>
+              <div style="font-size: 14px; color: #94a3b8;">Jason Lin</div>
+              <a href="mailto:jason660519@gmail.com?subject=Sushi%20Business%20Investment%20Inquiry" class="direct-email-btn">
+                ✉️ jason660519@gmail.com (Click to Email Directly)
+              </a>
+            </div>
+          </div>
+
+          <!-- Interactive Form -->
+          <div>
+            <form action="https://formsubmit.co/jason660519@gmail.com" method="POST" id="investorInquiryForm">
+              <!-- FormSubmit config -->
+              <input type="hidden" name="_subject" value="New Sushi Investment Question / 壽司投資新提問">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
+
+              <div class="form-group">
+                <label class="form-label" data-i18n="lbl_form_name">Your Name / 您的稱呼 *</label>
+                <input type="text" name="name" class="form-control" placeholder="e.g. Alex Lin / Family Member" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" data-i18n="lbl_form_email">Your Email / 您的聯絡信箱 *</label>
+                <input type="email" name="email" class="form-control" placeholder="name@example.com" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" data-i18n="lbl_form_topic">Topic of Interest / 關注的主題</label>
+                <select name="topic" class="form-control">
+                  <option value="Financial Returns & Payback">Financial Returns & Payback / 財務回報與回本</option>
+                  <option value="Coles Contract & Royalty">Coles Contract & 33% Royalty / Coles合約與抽成</option>
+                  <option value="Co-Investment Proposal">Co-Investment / 共同參與投資</option>
+                  <option value="Operational Labor & Schedule">Operational Labor / 實際營運工時</option>
+                  <option value="Other Questions">Other Questions / 其他問題</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" data-i18n="lbl_form_msg">Your Question or Feedback / 您的提問或意見 *</label>
+                <textarea name="message" rows="4" class="form-control" placeholder="Write your question here..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-submit">
+                <span data-i18n="btn_form_submit">Submit Question (發送提問並通知 Jason)</span> 🚀
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -1144,17 +1434,38 @@
         t_row5: "僅開週一至五午市，租金極便宜，生活節奏佳。",
         tag_train: "迴轉壽司",
         t_row6: "每週淨利高達 $5,475，僅開中午 11-15 點，需較大資金。",
-        s5_eyebrow: "Family Action Items",
-        s5_title: "兒子在家庭會議上與賣方洽談時該問的 5 個核心問題",
-        s5_desc: "這些問題能展現專業度，並保護家庭不會踏入投資陷阱：",
-        q1_title: "為什麼才開一週就急著轉讓？(Why selling after 1 week?)",
-        q1_desc: "賣方是原本的加盟商因體力/家庭原因退出？還是總部專門建置新店轉賣的「代建商（Turnkey Developer）」？若是前者，必須誠實了解他這一週遇到了什麼意料之外的困難。",
-        q2_title: "Coles 與 Snowfox 的專櫃合約還剩多久？(Master Lease Term)",
-        q2_desc: "我們簽下的加盟合約是幾年？Coles 超市是否有條款可以提前終止壽司專櫃合作？若 Coles 重新招標或整修，加盟主的權益如何保障？",
-        q3_title: "每天丟棄 20 盒的損耗率是否能改善？(Waste Management)",
-        q3_desc: "每天做 180 盒卻丟 20 盒，相當於超過 11% 的報廢率。是傍晚 Coles 人流不足？還是定價太高？總部是否有打折促銷（Markdown）機制以減少報廢？",
-        q4_title: "能否爭取 2-4 週的「試營運觀察期」再正式交割？(Trial Period)",
-        q4_desc: "既然是剛開的新店，只看 5 天數字風險太大。能否先付小額訂金，讓父母進店實習/試營運 2 到 4 週，確認營業額真實且身體能適應，再支付剩餘款項？",
+        s5_eyebrow: "商業盡職調查策略",
+        s5_title: "兒子與投資人必備的 5 組核心盡調 Q&A",
+        s5_desc: "這 5 組問答涵蓋商業談判核心，清楚剖析賣方回覆背後的「良好訊號」與「危險警訊」：",
+        qa1_q: "Q1：為什麼這家店才剛開一週，賣方就急著轉讓？(Why selling after 1 week?)",
+        qa1_a: "<strong>策略剖析</strong>：正常營業的店舖絕不會在第一週就轉讓，除非這是預先規劃的「代建交鑰匙工程（Turnkey Developer）」，或者原經營者遇到了嚴重的運營震撼。核心關鍵是釐清：究竟是該店點的「客流結構」有問題，還是僅僅是「前店主個人體力不適應」？",
+        qa1_green: "🟢 <strong>可接受訊號 (Green Flag)</strong>：賣方本身就是連鎖拓點代建商，專門承擔新開店鋪建置風險並賺取手續費；或是前店主毫無廚房經驗，開了一週才發現受不了早上 5:30 備料的體力消耗。",
+        qa1_red: "🔴 <strong>危險警訊 (Red Flag)</strong>：賣方發現這間 Coles 的客群全都是買生鮮食材的家庭客，完全不買即食外帶壽司，日營收根本衝不高，因而趁剛開急忙止損甩賣。",
+        qa2_q: "Q2：Coles 與 Snowfox 總公司的特許專櫃合約還剩多久？(Master Lease Term)",
+        qa2_a: "<strong>策略剖析</strong>：加盟主是 Coles 內部的次級特許人。即便您與總部的加盟約簽了 5 年，若 Coles 與總部的大合約只剩半年，或者 Coles 保留了單方面改裝撤櫃權利，您的投資經營期將失去保障。",
+        qa2_green: "🟢 <strong>良好訊號 (Green Flag)</strong>：Coles 與總部簽訂的是多年期全國性戰略協議，該店點享有至少 3–5 年保證期，且合約載明若超市改裝需提供同等位置遷址或補償。",
+        qa2_red: "🔴 <strong>危險警訊 (Red Flag)</strong>：該 Coles 門市預計 12 個月內進行全面翻新，或者 Coles 合約條款載明僅需 30 天書面通知即可無條件撤除櫃位。",
+        qa3_q: "Q3：每天丟棄 20 盒壽司的損耗（約 11% 報廢率）要如何改善？(Waste Management)",
+        qa3_a: "<strong>策略剖析</strong>：每天做 180 盒卻丟棄 20 盒，以食材成本每盒 $2 計算，每週直接丟棄約 $280 成本（折合零售額損失高達 $1,500/週）。關鍵在於總部是否允許下午進行「動態折價促銷（Markdown）」。",
+        qa3_green: "🟢 <strong>良好訊號 (Green Flag)</strong>：收銀 POS 系統允許下午 4:30 後貼折價貼紙（如 $10/盒出清），把即將報廢的多餘壽司轉換成純現金流，將報廢率壓至 3% 以下。",
+        qa3_red: "🔴 <strong>危險警訊 (Red Flag)</strong>：總公司為維護品牌形象嚴禁任何折扣出清，要求全數報廢，導致加盟主的辛勞毛利每天被白白吞噬。",
+        qa4_q: "Q4：在簽署正式合約前，能否爭取 2 到 4 週的「進店試營運觀察期」？(Trial Period)",
+        qa4_a: "<strong>策略剖析</strong>：剛營業 7 天的新店完全沒有 BAS 季度報稅記錄可供查驗。直接支付全額 $70,000 風險過高。標準的自我保護策略是將 10% 意向金存入律師信託帳戶，並讓父母進店帶薪/無薪實習 2–4 週。",
+        qa4_green: "🟢 <strong>良好訊號 (Green Flag)</strong>：賣方與總部非常歡迎父母進店跟班實習並手把手培訓，同意在驗證真實營業額與體力適應後，才正式交割付款。",
+        qa4_red: "🔴 <strong>危險警訊 (Red Flag)</strong>：賣方極力催促簽署無條件買賣合約，並嚴詞拒絕買方進店查看每日即時收銀機數據。",
+        qa5_q: "Q5：夫妻兩人經營的真實每日作息與體力排班為何？(Daily Schedule & Ergonomics)",
+        qa5_a: "<strong>策略剖析</strong>：超市壽司主打當日現做。壓飯機（Rice Sheeter）與洗米煮飯的效率，直接決定了父母每天是過「可持續的 7–8 小時健康工時」，還是「清晨 5 點站到晚上 7 點的過勞折磨」。",
+        qa5_green: "🟢 <strong>良好訊號 (Green Flag)</strong>：配備全自動壓飯機與切捲機，每日 180 盒可在上午 10:30 前全部鋪貨完畢，下午只需維持補貨與清潔，父母可輪流休息。",
+        qa5_red: "🔴 <strong>危險警訊 (Red Flag)</strong>：機器老舊故障需大量手工捲製，每天早上必須 5:00 到店，且因備料繁瑣導致中午前出貨不及。",
+        inq_badge: "即時聯絡與諮詢",
+        inq_title: "有疑問想討論？或想共同參與投資？",
+        inq_desc: "無論您是海外家族成員、潛在投資夥伴或顧問，可直接在此留下您的問題。Jason 會在 Email (<code style='color: #38bdf8;'>jason660519@gmail.com</code>) 即時收到通知並為您解答。",
+        inq_owner_label: "專案發起人與聯絡窗口",
+        lbl_form_name: "您的稱呼 / Your Name *",
+        lbl_form_email: "您的聯絡 Email *",
+        lbl_form_topic: "感興趣的討論主題",
+        lbl_form_msg: "您的提問或意見 / Question or Feedback *",
+        btn_form_submit: "發送提問並即時通知 Jason 🚀",
         footer_text: "Prepared for Jason & Family | Australian Sushi Business Investment Due Diligence & Educational Meeting | October 2026"
       },
       en: {
@@ -1166,7 +1477,7 @@
         link_concept: "2. Business Concepts for Son",
         link_market: "3. Market Benchmarks",
         link_calc: "4. Interactive Calculator",
-        link_questions: "5. Questions to Ask the Seller",
+        link_questions: "5. Due Diligence Q&As & Inquiries",
         s1_eyebrow: "Case Study #1",
         s1_title: "Current Target: Snowfox Kiosk inside Coles Supermarket",
         s1_desc: "Key operational facts and terms for the proposed acquisition.",
@@ -1235,17 +1546,38 @@
         t_row5: "Operates Mon-Fri lunch only, ultra-low rent, balanced lifestyle.",
         tag_train: "Sushi Train",
         t_row6: "High net profit ($5,475/wk), trading lunch only (11am-3pm), requires larger capital.",
-        s5_eyebrow: "Family Action Items",
-        s5_title: "5 Sharp Questions for Son to Ask the Seller & Franchisor",
-        s5_desc: "Ask these to protect the family from blind spots before signing any contract:",
-        q1_title: "Why sell after just one week? (Real Divestment Reason)",
-        q1_desc: "Is the seller overwhelmed by the early morning prep and physical demand, or are they a turnkey developer taking a quick arbitrage fee? Uncover their true bottleneck.",
-        q2_title: "What is the head lease term with Coles? (Master Lease Tenure)",
-        q2_desc: "How many years are guaranteed? Does Coles hold unilateral rights to terminate or relocate kiosks? What happens if Coles refurbishes the supermarket?",
-        q3_title: "How to eliminate the 20-box daily food waste? (Waste Control)",
-        q3_desc: "Discarding 20 boxes out of 180 is an 11% waste rate. Is it evening traffic drop-off or pricing? Does franchisor allow end-of-day markdowns to capture revenue?",
-        q4_title: "Can we negotiate a 2-4 week Trial Period before settlement? (Trial Run)",
-        q4_desc: "Buying a 7-day-old store carries high uncertainty. Can parents work inside for a 2-4 week trial under a small holding deposit before transferring the full $70k?",
+        s5_eyebrow: "Strategic Deal Due Diligence",
+        s5_title: "5 Core Due Diligence Q&As for Son & Investors",
+        s5_desc: "Master these questions and strategic answers to protect our family investment:",
+        qa1_q: "Q1: Why is the seller exiting after trading for only 1 week?",
+        qa1_a: "<strong>Strategic Analysis</strong>: A business does not normally sell in week one unless it is a pre-arranged 'Turnkey Development' or the operator faced an overwhelming operational shock. We must determine whether the problem is the <em>location's footfall</em> or purely <em>the operator's personal endurance</em>.",
+        qa1_green: "🟢 <strong>Green Flag (Acceptable)</strong>: The seller is a serial franchise builder whose business model is taking initial handover risks, or an investor with zero kitchen experience who realized they dislike 5:30 AM prep.",
+        qa1_red: "🔴 <strong>Red Flag (Walk Away)</strong>: The seller realizes Coles customer traffic consists only of raw grocery shoppers who do not buy ready-to-eat sushi, rendering break-even impossible.",
+        qa2_q: "Q2: What is the remaining tenure of the Master Agreement between Coles and Snowfox?",
+        qa2_a: "<strong>Strategic Analysis</strong>: You are a sub-licensee inside Coles. Even if your franchise agreement is for 5 years, if Coles' head contract with Snowfox expires in 6 months or Coles holds unilateral redevelopment rights, your tenure is in jeopardy.",
+        qa2_green: "🟢 <strong>Green Flag</strong>: Coles and franchisor hold an active multi-year national contract with at least 3-5 years guaranteed tenure and clear relocation compensation provisions.",
+        qa2_red: "🔴 <strong>Red Flag</strong>: Supermarket is scheduled for a major remodel within 12 months, or Coles reserves the right to terminate kiosk operators with only 30 days notice.",
+        qa3_q: "Q3: How can we reduce the daily 20-box food waste (~11% loss rate)?",
+        qa3_a: "<strong>Strategic Analysis</strong>: Discarding 20 boxes daily at $2 raw cost equals ~$280/wk down the drain (and lost retail sales of ~$1,500/wk). We need to know if the franchisor permits late-afternoon dynamic markdowns (e.g., $10 boxes after 4:30 PM).",
+        qa3_green: "🟢 <strong>Green Flag</strong>: POS system allows end-of-day markdown stickers, converting surplus rolls into pure cash flow rather than dumpster waste.",
+        qa3_red: "🔴 <strong>Red Flag</strong>: Franchisor strictly prohibits discounting to protect brand image, forcing full disposal and eroding owner profit.",
+        qa4_q: "Q4: Can we negotiate a 2 to 4-week 'Trial Period' before final settlement?",
+        qa4_a: "<strong>Strategic Analysis</strong>: Because the store has zero BAS tax history, paying 100% upfront on day 7 is excessive risk. The standard protective tactic is placing a 10% holding deposit in a solicitor's trust account while parents work inside for a 2-4 week trial.",
+        qa4_green: "🟢 <strong>Green Flag</strong>: Seller welcomes parents into the kitchen for hands-on trial and training, guaranteeing average sales verification before full fund release.",
+        qa4_red: "🔴 <strong>Red Flag</strong>: Seller rushes an immediate unconditional contract and refuses to let buyers observe real daily register transactions.",
+        qa5_q: "Q5: What is the exact daily physical schedule required for two operators?",
+        qa5_a: "<strong>Strategic Analysis</strong>: Supermarket sushi requires fresh morning rollout. Knowing whether rice cookers and sheeters can be prepped in 1.5 hours vs. 3.5 hours dictates whether parents work a sustainable 7-8 hour day or an exhausting 12-hour grind.",
+        qa5_green: "🟢 <strong>Green Flag</strong>: Automatic Rice Sheeter and Roll Cutter allow 180 boxes to be completed by 10:30 AM with steady afternoon maintenance.",
+        qa5_red: "🔴 <strong>Red Flag</strong>: Heavy manual rolling required due to faulty machines, requiring 5:00 AM to 6:30 PM presence without breaks.",
+        inq_badge: "Direct Communication",
+        inq_title: "Have Questions or Want to Co-Invest?",
+        inq_desc: "Whether you are an overseas family member, co-investor, or advisor, submit your question here. Jason will be notified instantly via email (<code style='color: #38bdf8;'>jason660519@gmail.com</code>) to provide prompt answers.",
+        inq_owner_label: "Project Owner & Contact",
+        lbl_form_name: "Your Name / 您的稱呼 *",
+        lbl_form_email: "Your Email / 您的聯絡信箱 *",
+        lbl_form_topic: "Topic of Interest / 關注的主題",
+        lbl_form_msg: "Your Question or Feedback / 您的提問或意見 *",
+        btn_form_submit: "Submit Question (發送提問並通知 Jason) 🚀",
         footer_text: "Prepared for Jason & Family | Australian Sushi Business Investment Due Diligence & Educational Meeting | October 2026"
       }
     };
