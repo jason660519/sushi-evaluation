@@ -50,6 +50,117 @@
       font-family: var(--font-zh);
     }
 
+    /* Password Gate Modal */
+    .lock-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(10, 15, 29, 0.96);
+      backdrop-filter: blur(16px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .lock-overlay.unlocked {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .lock-card {
+      background: #182234;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      animation: lockPop 0.3s ease-out;
+    }
+
+    @keyframes lockPop {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .lock-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .lock-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 6px;
+    }
+
+    .lock-desc {
+      font-size: 13.5px;
+      color: #94a3b8;
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+
+    .lock-input {
+      width: 100%;
+      padding: 12px 16px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: var(--radius-sm);
+      color: #fff;
+      font-size: 16px;
+      text-align: center;
+      letter-spacing: 0.1em;
+      outline: none;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .lock-input:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+    }
+
+    .lock-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #0284c7, #0ea5e9);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .lock-btn:hover {
+      opacity: 0.9;
+    }
+
+    .lock-error {
+      color: #f87171;
+      font-size: 13px;
+      margin-top: 10px;
+      display: none;
+    }
+
     /* Top Navigation */
     header {
       position: sticky;
@@ -565,6 +676,21 @@
 </head>
 <body class="lang-zh">
 
+  <!-- Password Gate Overlay -->
+  <div class="lock-overlay" id="lockOverlay">
+    <div class="lock-card">
+      <div class="lock-icon">🔒</div>
+      <h2 class="lock-title" id="lockTitle">家庭會議專屬訪問保護</h2>
+      <p class="lock-desc" id="lockDesc">
+        此頁面包含澳洲壽司投資評估與財務模擬，請輸入約定密碼解鎖瀏覽。<br>
+        <span style="font-size: 12px; color: #64748b;">Family Access Protected. Please enter password to continue.</span>
+      </p>
+      <input type="password" id="passInput" class="lock-input" placeholder="請輸入密碼 / Password" autofocus>
+      <button class="lock-btn" id="unlockBtn">解鎖瀏覽 (Unlock Access)</button>
+      <div class="lock-error" id="lockError">密碼錯誤，請重新輸入 (Incorrect Password)</div>
+    </div>
+  </div>
+
   <!-- Header -->
   <header>
     <div class="brand">
@@ -572,6 +698,7 @@
       <span class="brand-title" data-i18n="nav_title">澳洲壽司生意投資評估與教學</span>
     </div>
     <div class="nav-actions">
+      <button class="lang-btn" id="lockBtn" title="重新鎖定頁面" style="padding: 8px 12px;">🔒 重新鎖定</button>
       <button class="lang-btn" id="langToggle">
         <span id="langLabel">English / 中文切換</span>
       </button>
@@ -1224,6 +1351,48 @@
 
     // Init
     updateSimulator();
+
+    // Password Gate Logic (PIN: 0519)
+    const CORRECT_PIN = '0519';
+    const lockOverlay = document.getElementById('lockOverlay');
+    const passInput = document.getElementById('passInput');
+    const unlockBtn = document.getElementById('unlockBtn');
+    const lockError = document.getElementById('lockError');
+    const lockBtn = document.getElementById('lockBtn');
+
+    function checkUnlockStatus() {
+      if (sessionStorage.getItem('sushi_unlocked_0519') === 'true') {
+        lockOverlay.classList.add('unlocked');
+      } else {
+        lockOverlay.classList.remove('unlocked');
+        setTimeout(() => passInput.focus(), 100);
+      }
+    }
+
+    function doUnlock() {
+      if (passInput.value.trim() === CORRECT_PIN) {
+        sessionStorage.setItem('sushi_unlocked_0519', 'true');
+        lockError.style.display = 'none';
+        lockOverlay.classList.add('unlocked');
+      } else {
+        lockError.style.display = 'block';
+        passInput.style.borderColor = '#f87171';
+        passInput.value = '';
+        passInput.focus();
+      }
+    }
+
+    unlockBtn.addEventListener('click', doUnlock);
+    passInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') doUnlock();
+    });
+
+    lockBtn.addEventListener('click', () => {
+      sessionStorage.removeItem('sushi_unlocked_0519');
+      checkUnlockStatus();
+    });
+
+    checkUnlockStatus();
   </script>
 </body>
 </html>
