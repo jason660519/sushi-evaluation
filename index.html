@@ -519,6 +519,36 @@
       cursor: pointer;
     }
 
+    .labor-block {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+
+    .labor-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #38bdf8;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .labor-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 650px) {
+      .labor-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+
     .sim-results {
       background: var(--bg-card);
       border: 1px solid #334155;
@@ -978,67 +1008,123 @@
       </div>
     </section>
 
-    <!-- Section 3: Interactive Profit & Wage Calculator -->
+    <!-- Section 3: Interactive Business & Labor Simulator -->
     <section id="simulator">
       <div class="section-header">
-        <div class="section-eyebrow" data-i18n="s3_eyebrow">Interactive Simulation</div>
-        <h2 class="section-title" data-i18n="s3_title">家庭會議財務試算機：父母能賺多少錢？</h2>
-        <div class="section-desc" data-i18n="s3_desc">調整以下參數，即時查看每週營收在不同水準時，父母兩人每週能拿到多少現金、等效時薪是多少、以及多快能回本。</div>
+        <div class="section-eyebrow" data-i18n="s3_eyebrow">Financial & Labor Simulation</div>
+        <h2 class="section-title" data-i18n="s3_title">Business & Labor Simulator: Net Returns & ROI Analysis</h2>
+        <div class="section-desc" data-i18n="s3_desc">Customize sales and adjust the hours and wage rates for all 3 staffing roles (Casual Helper, Full-time Staff, Business Owner) to test owner-operator vs. fully-managed scenarios:</div>
       </div>
 
       <div class="simulator-wrapper">
         <!-- Controls -->
         <div class="sim-controls">
-          <h3 data-i18n="sim_controls_heading">營運變數設定 (Operational Inputs)</h3>
+          <h3 data-i18n="sim_controls_heading">Operational & Labor Inputs</h3>
 
+          <!-- Revenue & Fixed COGS -->
           <div class="control-group">
             <div class="control-header">
-              <span class="control-label" data-i18n="lbl_turnover">每週未稅營業額 (Weekly Sales ex GST)</span>
+              <span class="control-label" data-i18n="lbl_turnover">Weekly Sales (ex GST) / 每週未稅營業額</span>
               <span class="control-value" id="valTurnover">$9,500</span>
             </div>
             <input type="range" id="inputTurnover" min="6000" max="18000" step="500" value="9500">
             <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;" data-i18n="tip_turnover">
-              目前開幕五天外推約 $9,500；一般成熟超市專櫃約 $11,000 - $14,000。
+              Current 5-day pace ~$9,500/wk; mature kiosks benchmark $11,000 - $14,000.
             </div>
           </div>
 
-          <div class="control-group">
-            <div class="control-header">
-              <span class="control-label" data-i18n="lbl_royalty_slider">Coles + 總部抽成比率</span>
-              <span class="control-value" id="valRoyalty">33%</span>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+            <div class="control-group" style="margin-bottom: 0;">
+              <div class="control-header">
+                <span class="control-label" style="font-size: 12.5px;" data-i18n="lbl_royalty_slider">Coles + 總部抽成</span>
+                <span class="control-value" id="valRoyalty" style="font-size: 13.5px;">33%</span>
+              </div>
+              <input type="range" id="inputRoyalty" min="25" max="38" step="1" value="33">
             </div>
-            <input type="range" id="inputRoyalty" min="25" max="38" step="1" value="33">
-          </div>
-
-          <div class="control-group">
-            <div class="control-header">
-              <span class="control-label" data-i18n="lbl_cogs">食材、耗損與包裝成本比率 (COGS)</span>
-              <span class="control-value" id="valCogs">30%</span>
-            </div>
-            <input type="range" id="inputCogs" min="25" max="36" step="1" value="30">
-          </div>
-
-          <div class="control-group">
-            <div class="control-header">
-              <span class="control-label" data-i18n="lbl_helper">外聘兼職員工每週工時 (Helper Hours)</span>
-              <span class="control-value" id="valHelper">0 小時</span>
-            </div>
-            <input type="range" id="inputHelper" min="0" max="40" step="5" value="0">
-            <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;" data-i18n="tip_helper">
-              按澳洲法定外聘薪資每小時 $34 + 12% 退休金 ($38.08/hr) 扣除。
+            <div class="control-group" style="margin-bottom: 0;">
+              <div class="control-header">
+                <span class="control-label" style="font-size: 12.5px;" data-i18n="lbl_cogs">食材包裝耗損 COGS</span>
+                <span class="control-value" id="valCogs" style="font-size: 13.5px;">30%</span>
+              </div>
+              <input type="range" id="inputCogs" min="25" max="36" step="1" value="30">
             </div>
           </div>
 
-          <div class="control-group">
-            <div class="control-header">
-              <span class="control-label" data-i18n="lbl_parents_hours">父母兩人每週合計自營工時 (Total Parents Hours)</span>
-              <span class="control-value" id="valParentsHours">80 小時</span>
+          <!-- LABOR ROLE 1: Part-time Helper -->
+          <div class="labor-block">
+            <div class="labor-title">
+              <span data-i18n="lbl_role_helper">1. 工讀生 / 兼職 (Casual / Part-time Helper)</span>
+              <span id="subtotalHelper" style="color: #f87171; font-feature-settings: 'tnum';">$0 / wk</span>
             </div>
-            <input type="range" id="inputParentsHours" min="40" max="90" step="5" value="80">
-            <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;" data-i18n="tip_hours">
-              如兩人各全職 40 小時 = 80 小時；若請外人分擔，父母工時可相應減少。
+            <div class="labor-row">
+              <div>
+                <div class="control-header">
+                  <span class="control-label" style="font-size: 12px;" data-i18n="lbl_hours">工時 / Hours</span>
+                  <span class="control-value" id="valHelperHours" style="font-size: 13px;">0 hrs</span>
+                </div>
+                <input type="range" id="inputHelperHours" min="0" max="40" step="2" value="0">
+              </div>
+              <div>
+                <div class="control-header">
+                  <span class="control-label" style="font-size: 12px;" data-i18n="lbl_wage">時薪 / Wage Rate</span>
+                  <span class="control-value" id="valHelperRate" style="font-size: 13px;">$32 / hr</span>
+                </div>
+                <input type="range" id="inputHelperRate" min="24" max="45" step="1" value="32">
+              </div>
             </div>
           </div>
+
+          <!-- LABOR ROLE 2: Full-time Staff -->
+          <div class="labor-block">
+            <div class="labor-title">
+              <span data-i18n="lbl_role_fulltime">2. 正職人員 / 店長 (Full-time / Core Staff)</span>
+              <span id="subtotalFulltime" style="color: #f87171; font-feature-settings: 'tnum';">$0 / wk</span>
+            </div>
+            <div class="labor-row">
+              <div>
+                <div class="control-header">
+                  <span class="control-label" style="font-size: 12px;" data-i18n="lbl_hours">工時 / Hours</span>
+                  <span class="control-value" id="valFulltimeHours" style="font-size: 13px;">0 hrs</span>
+                </div>
+                <input type="range" id="inputFulltimeHours" min="0" max="45" step="2" value="0">
+              </div>
+              <div>
+                <div class="control-header">
+                  <span class="control-label" style="font-size: 12px;" data-i18n="lbl_wage">時薪 / Wage Rate</span>
+                  <span class="control-value" id="valFulltimeRate" style="font-size: 13px;">$36 / hr</span>
+                </div>
+                <input type="range" id="inputFulltimeRate" min="28" max="55" step="1" value="36">
+              </div>
+            </div>
+          </div>
+
+          <!-- LABOR ROLE 3: Business Owner -->
+          <div class="labor-block" style="border-color: rgba(56, 189, 248, 0.3); background: rgba(56, 189, 248, 0.05);">
+            <div class="labor-title" style="color: #38bdf8;">
+              <span data-i18n="lbl_role_owner">3. 業主投入時間 (Business Owner Time & Wage)</span>
+              <span id="subtotalOwnerHours" style="color: #38bdf8; font-feature-settings: 'tnum';">40 hrs / wk</span>
+            </div>
+            <div class="labor-row">
+              <div>
+                <div class="control-header">
+                  <span class="control-label" style="font-size: 12px;" data-i18n="lbl_owner_hours">投入工時 / Hours</span>
+                  <span class="control-value" id="valOwnerHours" style="font-size: 13px;">40 hrs</span>
+                </div>
+                <input type="range" id="inputOwnerHours" min="0" max="80" step="5" value="40">
+              </div>
+              <div>
+                <div class="control-header">
+                  <span class="control-label" style="font-size: 12px;" data-i18n="lbl_owner_target_rate">目標時薪 / Target Rate</span>
+                  <span class="control-value" id="valOwnerRate" style="font-size: 13px;">$40 / hr</span>
+                </div>
+                <input type="range" id="inputOwnerRate" min="0" max="80" step="5" value="40">
+              </div>
+            </div>
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 6px;" data-i18n="tip_owner">
+              Set hours to 0 to model a pure passive / fully-managed investment.
+            </div>
+          </div>
+
         </div>
 
         <!-- Output Display -->
@@ -1046,46 +1132,50 @@
           <div>
             <div class="result-hero">
               <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary);" data-i18n="res_weekly_net">
-                父母每週稅前淨得現金 (Parents Weekly Net Cash)
+                Owner Weekly Net Cashflow / 業主每週淨現金額
               </div>
               <div class="result-hero-num" id="resWeeklyNet">$3,115</div>
-              <div class="result-hero-sub" id="resAnnualNet">年化家庭收入：$161,980 AUD / 年</div>
+              <div class="result-hero-sub" id="resAnnualNet">Annual Net Earnings: $161,980 AUD / yr</div>
             </div>
 
             <div class="result-breakdown">
               <div class="breakdown-row">
-                <span data-i18n="row_gross">每週未稅營業額</span>
+                <span data-i18n="row_gross">Weekly Gross Sales (ex GST)</span>
                 <span id="rowGross" style="color: var(--text-primary); font-weight: 600;">$9,500</span>
               </div>
               <div class="breakdown-row">
-                <span data-i18n="row_royalty">Coles + 總部抽成 (33%)</span>
+                <span data-i18n="row_royalty">Coles + Franchisor Cut (33%)</span>
                 <span id="rowRoyalty" style="color: #f87171;">-$3,135</span>
               </div>
               <div class="breakdown-row">
-                <span data-i18n="row_cogs">食材、包裝與耗損 (30%)</span>
+                <span data-i18n="row_cogs">COGS, Packaging & Waste (30%)</span>
                 <span id="rowCogs" style="color: #f87171;">-$2,850</span>
               </div>
               <div class="breakdown-row">
-                <span data-i18n="row_helper">外聘幫工支出</span>
-                <span id="rowHelper" style="color: #f87171;">-$0</span>
-              </div>
-              <div class="breakdown-row">
-                <span data-i18n="row_fixed">雜費（保險/POS/清潔耗材）</span>
+                <span data-i18n="row_fixed">Misc Store Expenses (POS/Consumables)</span>
                 <span style="color: #f87171;">-$400</span>
               </div>
-              <div class="breakdown-row total">
-                <span data-i18n="row_wage_equiv">父母等效時薪 (Hourly Rate per Parent)</span>
-                <span id="resHourlyRate" style="color: #38bdf8;">$38.94 / hr</span>
+              <div class="breakdown-row">
+                <span data-i18n="row_hired_wages">Total Hired Staff Wages (Roles 1 & 2)</span>
+                <span id="rowHiredWages" style="color: #f87171;">-$0</span>
               </div>
               <div class="breakdown-row total">
-                <span data-i18n="row_payback">本金 $70,000 回本週期</span>
-                <span id="resPayback" style="color: var(--accent-amber);">約 5.6 個月</span>
+                <span data-i18n="row_owner_hourly">Owner Effective Hourly Return</span>
+                <span id="resHourlyRate" style="color: #38bdf8;">$77.88 / hr</span>
+              </div>
+              <div class="breakdown-row total">
+                <span data-i18n="row_roi">Annual ROI on $70,000 Capital</span>
+                <span id="resRoi" style="color: var(--accent-emerald);">231.4% / yr</span>
+              </div>
+              <div class="breakdown-row total">
+                <span data-i18n="row_payback">Payback Timeline on $70k</span>
+                <span id="resPayback" style="color: var(--accent-amber);">5.2 months</span>
               </div>
             </div>
           </div>
 
           <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-sm); padding: 12px; margin-top: 16px; font-size: 12.5px; color: #a7f3d0;" id="simInsight">
-            ✅ <strong>分析解讀</strong>：在此營收水準下，若夫妻全職親力親為，時薪約 $38.94，優於澳洲最低法定工資（$24.97），是一筆穩健的家庭自營收益。
+            <!-- Dynamic insight rendered in JS -->
           </div>
         </div>
       </div>
@@ -1395,25 +1485,30 @@
         c3_p1: "<strong>沒有歷史商譽 (Zero Goodwill)</strong>：這間店才開 7 天，沒有熟客、沒有一整年四季的報稅紀錄（BAS），不能當作成熟生意來買。",
         c3_p2: "<strong>開幕蜜月期現象</strong>：新開幕第一週常有好奇客流，營業額可能暫時偏高；隨後可能面臨 15%-25% 的回落。",
         c3_summary: "💡 核心問題：原店主為什麼才做了一週就要賣？是太累做不來？還是原本就是拓點代建商？",
-        s3_eyebrow: "Interactive Simulation",
-        s3_title: "家庭會議財務試算機：父母能賺多少錢？",
-        s3_desc: "調整以下參數，即時查看每週營收在不同水準時，父母兩人每週能拿到多少現金、等效時薪是多少、以及多快能回本。",
-        sim_controls_heading: "營運變數設定 (Operational Inputs)",
+        s3_eyebrow: "財務與人力收益試算",
+        s3_title: "投資收益與人力試算模型：三大人力成本與 ROI 分析",
+        s3_desc: "自由設定營業額，並精準調整三種角色（工讀生、正職人員、業主工時與時薪），試算自營與純投資（全聘工代管）的真實現金流回報：",
+        sim_controls_heading: "營運與人力成本設定 (Operational & Labor)",
         lbl_turnover: "每週未稅營業額 (Weekly Sales ex GST)",
         tip_turnover: "目前開幕五天外推約 $9,500；一般成熟超市專櫃約 $11,000 - $14,000。",
         lbl_royalty_slider: "Coles + 總部抽成比率",
-        lbl_cogs: "食材、耗損與包裝成本比率 (COGS)",
-        lbl_helper: "外聘兼職員工每週工時 (Helper Hours)",
-        tip_helper: "按澳洲法定外聘薪資每小時 $34 + 12% 退休金 ($38.08/hr) 扣除。",
-        lbl_parents_hours: "父母兩人每週合計自營工時 (Total Parents Hours)",
-        tip_hours: "如兩人各全職 40 小時 = 80 小時；若請外人分擔，父母工時可相應減少。",
-        res_weekly_net: "父母每週稅前淨得現金 (Parents Weekly Net Cash)",
+        lbl_cogs: "食材耗損與包裝成本 (COGS %)",
+        lbl_role_helper: "1. 工讀生 / 兼職 (Casual / Part-time Helper)",
+        lbl_role_fulltime: "2. 正職人員 / 店長 (Full-time / Core Staff)",
+        lbl_role_owner: "3. 業主投入時間 (Business Owner Time & Wage)",
+        lbl_hours: "每週工時 / Hours",
+        lbl_wage: "時薪 / Hourly Wage",
+        lbl_owner_hours: "業主投入工時 / Hours",
+        lbl_owner_target_rate: "目標時薪期望 / Target Rate",
+        tip_owner: "若業主工時設為 0，即模擬純被動投資（全聘工委託代管模式）。",
+        res_weekly_net: "業主/投資人每週淨現金額 (Owner Weekly Net Cashflow)",
         row_gross: "每週未稅營業額",
         row_royalty: "Coles + 總部抽成 (33%)",
         row_cogs: "食材、包裝與耗損 (30%)",
-        row_helper: "外聘幫工支出",
-        row_fixed: "雜費（保險/POS/清潔耗材）",
-        row_wage_equiv: "父母等效時薪 (Hourly Rate per Parent)",
+        row_fixed: "店鋪固定雜費（保險/POS/清潔耗材）",
+        row_hired_wages: "外聘員工薪資支出合計 (工讀生 + 正職)",
+        row_owner_hourly: "業主時間實質等效時薪",
+        row_roi: "本金 $70,000 年化投資回報率 (Annual ROI %)",
         row_payback: "本金 $70,000 回本週期",
         s4_eyebrow: "Market Due Diligence",
         s4_title: "全澳壽司生意「貨比三家」真實行情清單",
@@ -1507,26 +1602,31 @@
         c3_p1: "<strong>Zero Goodwill</strong>: Trading for only 7 days means there are no loyal repeat customers and no historical BAS tax returns to rely upon.",
         c3_p2: "<strong>The Honeymoon Effect</strong>: Week 1 sales often reflect novelty foot traffic, which can taper off by 15-25% once normal patterns settle.",
         c3_summary: "💡 Critical Question: Why is the seller divesting after just 1 week? Exhaustion or a professional turnkey flipper?",
-        s3_eyebrow: "Interactive Simulation",
-        s3_title: "Financial Simulator: How Much Do Parents Actually Take Home?",
-        s3_desc: "Adjust the levers below to see parents' net weekly cash, equivalent hourly rate, and payback timeline across different sales volumes.",
-        sim_controls_heading: "Operational Inputs",
+        s3_eyebrow: "Financial & Labor Simulation",
+        s3_title: "Business & Labor Simulator: Net Returns & ROI Analysis",
+        s3_desc: "Customize sales and adjust the hours and wage rates for all 3 staffing roles (Casual Helper, Full-time Staff, Business Owner) to test owner-operator vs. fully-managed scenarios:",
+        sim_controls_heading: "Operational & Labor Inputs",
         lbl_turnover: "Weekly Sales (ex GST)",
-        tip_turnover: "Currently tracking ~$9,500; mature supermarket kiosks average $11,000 - $14,000.",
+        tip_turnover: "Current 5-day pace ~$9,500/wk; mature kiosks benchmark $11,000 - $14,000.",
         lbl_royalty_slider: "Coles + Franchisor Royalty",
         lbl_cogs: "COGS, Packaging & Waste %",
-        lbl_helper: "Part-time Helper Hours / Week",
-        tip_helper: "Deducted at legal casual rate: $34/hr + 12% super ($38.08/hr total).",
-        lbl_parents_hours: "Total Combined Parents Hours / Week",
-        tip_hours: "e.g., both parents working 40 hrs each = 80 total hours.",
-        res_weekly_net: "Parents Weekly Net Cash (Pre-Tax)",
+        lbl_role_helper: "1. Casual / Part-time Helper",
+        lbl_role_fulltime: "2. Full-time / Core Staff",
+        lbl_role_owner: "3. Business Owner Time & Wage",
+        lbl_hours: "Weekly Hours",
+        lbl_wage: "Hourly Wage",
+        lbl_owner_hours: "Owner Hours / Wk",
+        lbl_owner_target_rate: "Target Hourly Return",
+        tip_owner: "Set hours to 0 to model a pure passive / fully-managed investment.",
+        res_weekly_net: "Owner Weekly Net Cashflow (Pre-Tax)",
         row_gross: "Weekly Gross Sales (ex GST)",
         row_royalty: "Coles + Franchisor Cut (33%)",
-        row_cogs: "COGS & Packaging (30%)",
-        row_helper: "External Helper Wages",
+        row_cogs: "COGS, Packaging & Waste (30%)",
         row_fixed: "Misc Store Expenses (POS/Consumables)",
-        row_wage_equiv: "Equivalent Hourly Rate per Parent",
-        row_payback: "Payback Period on $70k Capital",
+        row_hired_wages: "Total Hired Staff Wages (Roles 1 & 2)",
+        row_owner_hourly: "Owner Effective Hourly Return",
+        row_roi: "Annual ROI on $70,000 Capital",
+        row_payback: "Payback Timeline on $70k",
         s4_eyebrow: "Market Due Diligence",
         s4_title: "Cross-Market Comparison: Current Listings in Australia",
         s4_desc: "Real data from Australian business brokers to benchmark whether $70,000 is fair value.",
@@ -1611,81 +1711,132 @@
       setLanguage(currentLang === 'zh' ? 'en' : 'zh');
     });
 
-    // Simulator Logic
+    // Simulator Inputs (3 Labor Roles)
     const inputTurnover = document.getElementById('inputTurnover');
     const inputRoyalty = document.getElementById('inputRoyalty');
     const inputCogs = document.getElementById('inputCogs');
-    const inputHelper = document.getElementById('inputHelper');
-    const inputParentsHours = document.getElementById('inputParentsHours');
+
+    // Role 1: Helper
+    const inputHelperHours = document.getElementById('inputHelperHours');
+    const inputHelperRate = document.getElementById('inputHelperRate');
+
+    // Role 2: Full-time Staff
+    const inputFulltimeHours = document.getElementById('inputFulltimeHours');
+    const inputFulltimeRate = document.getElementById('inputFulltimeRate');
+
+    // Role 3: Business Owner
+    const inputOwnerHours = document.getElementById('inputOwnerHours');
+    const inputOwnerRate = document.getElementById('inputOwnerRate');
 
     function updateSimulator() {
       const turnover = parseFloat(inputTurnover.value);
       const royaltyPct = parseFloat(inputRoyalty.value) / 100;
       const cogsPct = parseFloat(inputCogs.value) / 100;
-      const helperHours = parseFloat(inputHelper.value);
-      const parentsHours = parseFloat(inputParentsHours.value);
 
+      const helperHours = parseFloat(inputHelperHours.value);
+      const helperRate = parseFloat(inputHelperRate.value);
+
+      const fulltimeHours = parseFloat(inputFulltimeHours.value);
+      const fulltimeRate = parseFloat(inputFulltimeRate.value);
+
+      const ownerHours = parseFloat(inputOwnerHours.value);
+      const ownerRate = parseFloat(inputOwnerRate.value);
+
+      // Labels update
       document.getElementById('valTurnover').textContent = `$${turnover.toLocaleString()}`;
       document.getElementById('valRoyalty').textContent = `${inputRoyalty.value}%`;
       document.getElementById('valCogs').textContent = `${inputCogs.value}%`;
-      document.getElementById('valHelper').textContent = `${helperHours} ${currentLang === 'zh' ? '小時' : 'hrs'}`;
-      document.getElementById('valParentsHours').textContent = `${parentsHours} ${currentLang === 'zh' ? '小時' : 'hrs'}`;
+
+      document.getElementById('valHelperHours').textContent = `${helperHours} hrs`;
+      document.getElementById('valHelperRate').textContent = `$${helperRate} / hr`;
+      const helperCost = helperHours * helperRate;
+      document.getElementById('subtotalHelper').textContent = `-$${Math.round(helperCost).toLocaleString()} / wk`;
+
+      document.getElementById('valFulltimeHours').textContent = `${fulltimeHours} hrs`;
+      document.getElementById('valFulltimeRate').textContent = `$${fulltimeRate} / hr`;
+      const fulltimeCost = fulltimeHours * fulltimeRate;
+      document.getElementById('subtotalFulltime').textContent = `-$${Math.round(fulltimeCost).toLocaleString()} / wk`;
+
+      document.getElementById('valOwnerHours').textContent = `${ownerHours} hrs`;
+      document.getElementById('valOwnerRate').textContent = `$${ownerRate} / hr`;
+      document.getElementById('subtotalOwnerHours').textContent = `${ownerHours} hrs / wk`;
 
       // Financials
       const royaltyFee = turnover * royaltyPct;
       const cogsFee = turnover * cogsPct;
-      const helperWageRate = 34 * 1.12; // $38.08
-      const helperCost = helperHours * helperWageRate;
-      const fixedCost = 400; // Misc pos/insurance
+      const hiredWages = helperCost + fulltimeCost;
+      const fixedCost = 400; // Misc POS, consumables, insurance
 
-      const weeklyNet = turnover - royaltyFee - cogsFee - helperCost - fixedCost;
+      // Owner Net Cashflow
+      const weeklyNet = turnover - royaltyFee - cogsFee - hiredWages - fixedCost;
       const annualNet = weeklyNet * 52;
-      const hourlyRate = parentsHours > 0 ? (weeklyNet / parentsHours) : 0;
       const capital = 70000;
+      const annualRoi = (annualNet / capital) * 100;
       const paybackMonths = weeklyNet > 0 ? (capital / (weeklyNet * 4.33)) : 999;
 
-      // Update UI
+      const ownerHourlyReturn = ownerHours > 0 ? (weeklyNet / ownerHours) : 0;
+
+      // Update UI Display
       document.getElementById('resWeeklyNet').textContent = `$${Math.round(weeklyNet).toLocaleString()}`;
-      document.getElementById('resAnnualNet').textContent = currentLang === 'zh' 
-        ? `年化家庭總收入：$${Math.round(annualNet).toLocaleString()} AUD / 年`
-        : `Annual Household Earnings: $${Math.round(annualNet).toLocaleString()} AUD / yr`;
+      document.getElementById('resAnnualNet').textContent = currentLang === 'zh'
+        ? `年化淨現金額：$${Math.round(annualNet).toLocaleString()} AUD / 年`
+        : `Annual Net Earnings: $${Math.round(annualNet).toLocaleString()} AUD / yr`;
 
       document.getElementById('rowGross').textContent = `$${Math.round(turnover).toLocaleString()}`;
       document.getElementById('rowRoyalty').textContent = `-$${Math.round(royaltyFee).toLocaleString()}`;
       document.getElementById('rowCogs').textContent = `-$${Math.round(cogsFee).toLocaleString()}`;
-      document.getElementById('rowHelper').textContent = `-$${Math.round(helperCost).toLocaleString()}`;
-      document.getElementById('resHourlyRate').textContent = `$${hourlyRate.toFixed(2)} / hr`;
-      document.getElementById('resPayback').textContent = paybackMonths < 60 
+      document.getElementById('rowHiredWages').textContent = `-$${Math.round(hiredWages).toLocaleString()}`;
+
+      if (ownerHours > 0) {
+        document.getElementById('resHourlyRate').textContent = `$${ownerHourlyReturn.toFixed(2)} / hr`;
+      } else {
+        document.getElementById('resHourlyRate').textContent = currentLang === 'zh' ? '純被動投資模式' : 'Pure Passive Model';
+      }
+
+      document.getElementById('resRoi').textContent = weeklyNet > 0 ? `${annualRoi.toFixed(1)}% / yr` : '0% (虧損)';
+      document.getElementById('resPayback').textContent = paybackMonths < 60
         ? `${paybackMonths.toFixed(1)} ${currentLang === 'zh' ? '個月' : 'months'}`
         : `${currentLang === 'zh' ? '超長 (>5年)' : '> 5 years'}`;
 
       // Dynamic insight message
       const insightEl = document.getElementById('simInsight');
-      if (weeklyNet <= 1200) {
+      if (weeklyNet <= 0) {
         insightEl.style.borderColor = 'rgba(239, 68, 68, 0.4)';
         insightEl.style.background = 'rgba(239, 68, 68, 0.1)';
         insightEl.style.color = '#fca5a5';
         insightEl.innerHTML = currentLang === 'zh'
-          ? `⚠️ <strong>警示</strong>：目前營收偏低，夫妻投入 ${parentsHours} 小時換算時薪僅 $${hourlyRate.toFixed(2)}，低於澳洲法定最低工資，需嚴控成本或提高銷量。`
-          : `⚠️ <strong>Warning</strong>: Net return is weak. Effective hourly rate ($${hourlyRate.toFixed(2)}/hr) is below Australian minimum wage ($24.97). Volume must improve.`;
-      } else if (hourlyRate >= 35) {
+          ? `⚠️ <strong>警示</strong>：扣除抽成、食材與外聘薪資後為負現金流（每週虧損 $${Math.abs(Math.round(weeklyNet))}）。需增加營收或減少外聘工時。`
+          : `⚠️ <strong>Warning</strong>: Negative cashflow (-$${Math.abs(Math.round(weeklyNet))}/wk) after paying hired staff, royalty and COGS. Increase sales or adjust labor schedule.`;
+      } else if (ownerHours === 0) {
+        insightEl.style.borderColor = 'rgba(56, 189, 248, 0.4)';
+        insightEl.style.background = 'rgba(56, 189, 248, 0.1)';
+        insightEl.style.color = '#bae6fd';
+        insightEl.innerHTML = currentLang === 'zh'
+          ? `💼 <strong>純被動投資模式 (Fully Managed)</strong>：業主 0 工時投入，扣除正職與兼職全部薪資後，年化純利潤約 $${Math.round(annualNet).toLocaleString()} AUD，年化投資回報率 (ROI) 達 ${annualRoi.toFixed(1)}%，約 ${paybackMonths.toFixed(1)} 個月完全回本！`
+          : `💼 <strong>Fully Managed Passive Model</strong>: Owner invests 0 operational hours. After covering all staff wages, annual passive profit is ~$${Math.round(annualNet).toLocaleString()} AUD with an impressive ${annualRoi.toFixed(1)}% ROI (~${paybackMonths.toFixed(1)} months payback).`;
+      } else if (ownerHourlyReturn >= ownerRate) {
         insightEl.style.borderColor = 'rgba(16, 185, 129, 0.4)';
         insightEl.style.background = 'rgba(16, 185, 129, 0.1)';
         insightEl.style.color = '#a7f3d0';
         insightEl.innerHTML = currentLang === 'zh'
-          ? `✅ <strong>健康回報</strong>：等效時薪 $${hourlyRate.toFixed(2)}，優於市場受聘打工工資，年化收益約 $${Math.round(annualNet).toLocaleString()} AUD，約 ${paybackMonths.toFixed(1)} 個月即可回本。`
-          : `✅ <strong>Solid Return</strong>: Effective wage of $${hourlyRate.toFixed(2)}/hr beats standard market employment wages, yielding ~$${Math.round(annualNet).toLocaleString()} AUD/yr with ~${paybackMonths.toFixed(1)} months capital payback.`;
+          ? `✅ <strong>健康回報</strong>：業主每週投入 ${ownerHours} 小時，實質等效時薪達 $${ownerHourlyReturn.toFixed(2)} / hr（高於您的目標時薪 $${ownerRate}），年化收益約 $${Math.round(annualNet).toLocaleString()} AUD，回本期僅 ${paybackMonths.toFixed(1)} 個月。`
+          : `✅ <strong>Solid Return</strong>: With ${ownerHours} hrs owner input, effective hourly return is $${ownerHourlyReturn.toFixed(2)}/hr (beating your target rate of $${ownerRate}/hr), netting ~$${Math.round(annualNet).toLocaleString()} AUD/yr with ~${paybackMonths.toFixed(1)} months payback.`;
       } else {
         insightEl.style.borderColor = 'rgba(245, 158, 11, 0.4)';
         insightEl.style.background = 'rgba(245, 158, 11, 0.1)';
         insightEl.style.color = '#fde68a';
         insightEl.innerHTML = currentLang === 'zh'
-          ? `ℹ️ <strong>持平水準</strong>：等效時薪約 $${hourlyRate.toFixed(2)}，與澳洲一般餐飲兼職打工相當。主要價值在於自雇穩定性與商業自主。`
-          : `ℹ️ <strong>Fair Level</strong>: Effective wage of $${hourlyRate.toFixed(2)}/hr roughly mirrors typical casual hospitality wages. Value lies in employment self-reliance.`;
+          ? `ℹ️ <strong>普通回報</strong>：業主等效時薪約 $${ownerHourlyReturn.toFixed(2)} / hr，稍低於目標期望。可考慮增加高毛利產品或微調外聘排班以提升收益。`
+          : `ℹ️ <strong>Moderate Return</strong>: Owner effective return is $${ownerHourlyReturn.toFixed(2)}/hr, slightly below target expectations. Consider driving sales volume or optimizing staff shift efficiency.`;
       }
     }
 
-    [inputTurnover, inputRoyalty, inputCogs, inputHelper, inputParentsHours].forEach(input => {
+    [
+      inputTurnover, inputRoyalty, inputCogs,
+      inputHelperHours, inputHelperRate,
+      inputFulltimeHours, inputFulltimeRate,
+      inputOwnerHours, inputOwnerRate
+    ].forEach(input => {
       input.addEventListener('input', updateSimulator);
     });
 
