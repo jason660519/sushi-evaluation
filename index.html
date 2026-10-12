@@ -1440,10 +1440,10 @@
               </div>
             </div>
 
-            <!-- Role 2: Full-time Pool -->
+            <!-- Role 2: Full-time Staff / Roll Maker -->
             <div class="labor-block">
               <div class="labor-title">
-                <span data-i18n="lbl_role_fulltime">2. Full-time / Core Staff Pool</span>
+                <span data-i18n="lbl_role_fulltime">2. Full-time Staff / Roll Maker</span>
                 <span id="subtotalFulltime" style="color: #f87171; font-feature-settings: 'tnum';">$0 / wk</span>
               </div>
               <div class="labor-row">
@@ -1457,17 +1457,41 @@
                 <div>
                   <div class="control-header">
                     <span class="control-label" data-i18n="lbl_wage">Hourly Rate</span>
-                    <span class="control-value" id="valFulltimeRate">$36 / hr</span>
+                    <span class="control-value" id="valFulltimeRate">$34 / hr</span>
                   </div>
-                  <input type="range" id="inputFulltimeRate" min="25" max="100" step="1" value="36">
+                  <input type="range" id="inputFulltimeRate" min="25" max="90" step="1" value="34">
                 </div>
               </div>
             </div>
 
-            <!-- Role 3: Business Owner -->
+            <!-- Role 3: Store Manager / Head Chef -->
+            <div class="labor-block">
+              <div class="labor-title">
+                <span data-i18n="lbl_role_manager">3. Store Manager / Head Chef</span>
+                <span id="subtotalManager" style="color: #f87171; font-feature-settings: 'tnum';">$0 / wk</span>
+              </div>
+              <div class="labor-row">
+                <div>
+                  <div class="control-header">
+                    <span class="control-label" data-i18n="lbl_hours">Total Hours (0-1,000)</span>
+                    <span class="control-value" id="valManagerHours">0 hrs</span>
+                  </div>
+                  <input type="range" id="inputManagerHours" min="0" max="1000" step="5" value="0">
+                </div>
+                <div>
+                  <div class="control-header">
+                    <span class="control-label" data-i18n="lbl_wage">Hourly Rate</span>
+                    <span class="control-value" id="valManagerRate">$42 / hr</span>
+                  </div>
+                  <input type="range" id="inputManagerRate" min="28" max="120" step="1" value="42">
+                </div>
+              </div>
+            </div>
+
+            <!-- Role 4: Business Owner -->
             <div class="labor-block" style="border-color: rgba(56, 189, 248, 0.3); background: rgba(56, 189, 248, 0.05);">
               <div class="labor-title" style="color: #38bdf8;">
-                <span data-i18n="lbl_role_owner">3. Business Owner Time & Return</span>
+                <span data-i18n="lbl_role_owner">4. Business Owner Time & Return</span>
                 <span id="subtotalOwnerHours" style="color: #38bdf8; font-feature-settings: 'tnum';">40 hrs / wk</span>
               </div>
               <div class="labor-row">
@@ -1570,7 +1594,7 @@
                 <span id="rowFixed" style="color: #f87171;">-$400</span>
               </div>
               <div class="breakdown-row">
-                <span data-i18n="row_hired_wages">Total Hired Staff Wages (Roles 1 & 2)</span>
+                <span data-i18n="row_hired_wages">Total Hired Staff Wages (Roles 1, 2 & 3)</span>
                 <span id="rowHiredWages" style="color: #f87171;">-$0</span>
               </div>
             </div>
@@ -1993,9 +2017,10 @@
         lbl_delivery_cut: "外送平台佣金與刷卡手續費 %",
         lbl_fixed_rent: "每週固定租金、水電與雜費",
         grp_labor_title: "C. 人力工時池與薪資 (0 至 1,000 小時/週)",
-        lbl_role_helper: "1. 工讀生 / 兼職總工時池 (Casual Pool)",
-        lbl_role_fulltime: "2. 正職人員 / 店長總工時池 (Full-time Pool)",
-        lbl_role_owner: "3. 經營業主時間投入 (Business Owner)",
+        lbl_role_helper: "1. 工讀生 / 兼職工時 (Casual Helper)",
+        lbl_role_fulltime: "2. 正職人員 / 壽司師傅 (Full-time Staff)",
+        lbl_role_manager: "3. 專職店長 / 營運主廚 (Store Manager)",
+        lbl_role_owner: "4. 經營業主時間投入 (Business Owner)",
         lbl_hours: "每週總工時 (0-1,000h)",
         lbl_wage: "時薪費率",
         lbl_owner_hours: "業主工時 (0-1,000h)",
@@ -2016,7 +2041,7 @@
         row_cogs: "食材、包裝與耗損成本",
         row_delivery: "外送抽成與 EFTPOS 刷卡費",
         row_fixed: "固定租金、水電能源與物業雜費",
-        row_hired_wages: "外聘員工薪資支出合計 (角色 1 + 2)",
+        row_hired_wages: "外聘員工薪資支出合計 (角色 1, 2, 3)",
         s4_eyebrow: "市場行情橫向盡調",
         s4_title: "全澳壽司生意「貨比三家」真實行情清單",
         s4_desc: "取自澳洲商業仲介公開出售之真實店鋪數據，客觀衡量本案 $70,000 之性價比：",
@@ -2198,8 +2223,9 @@
         lbl_fixed_rent: "Fixed Rent & Outgoings/wk",
         grp_labor_title: "C. Staffing & Labor Tiers (0 to 1,000 hrs/wk)",
         lbl_role_helper: "1. Casual / Part-time Helper Pool",
-        lbl_role_fulltime: "2. Full-time / Core Staff Pool",
-        lbl_role_owner: "3. Business Owner Time & Return",
+        lbl_role_fulltime: "2. Full-time Staff / Roll Maker",
+        lbl_role_manager: "3. Store Manager / Head Chef",
+        lbl_role_owner: "4. Business Owner Time & Return",
         lbl_hours: "Total Hours (0-1,000)",
         lbl_wage: "Hourly Rate",
         lbl_owner_hours: "Owner Hours (0-1,000)",
@@ -2220,7 +2246,7 @@
         row_cogs: "COGS, Packaging & Spoilage",
         row_delivery: "Delivery Commission & EFTPOS",
         row_fixed: "Fixed Rent, Power & Outgoings",
-        row_hired_wages: "Total Hired Staff Wages (Roles 1 & 2)",
+        row_hired_wages: "Total Hired Staff Wages (Roles 1, 2 & 3)",
         s4_eyebrow: "Market Due Diligence",
         s4_title: "Australian Sushi Business Market Benchmarks",
         s4_desc: "Verified listings from Australian commercial business brokers to evaluate whether $70,000 represents compelling risk-adjusted value:",
@@ -2316,7 +2342,9 @@
         helperHours: 0,
         helperRate: 32,
         fulltimeHours: 0,
-        fulltimeRate: 36,
+        fulltimeRate: 34,
+        managerHours: 0,
+        managerRate: 42,
         ownerHours: 40,
         ownerRate: 40
       },
@@ -2335,7 +2363,9 @@
         helperHours: 25,
         helperRate: 32,
         fulltimeHours: 38,
-        fulltimeRate: 36,
+        fulltimeRate: 34,
+        managerHours: 0,
+        managerRate: 42,
         ownerHours: 20,
         ownerRate: 40
       },
@@ -2354,7 +2384,9 @@
         helperHours: 30,
         helperRate: 32,
         fulltimeHours: 38,
-        fulltimeRate: 36,
+        fulltimeRate: 34,
+        managerHours: 0,
+        managerRate: 42,
         ownerHours: 30,
         ownerRate: 40
       },
@@ -2373,8 +2405,10 @@
         helperHours: 80,
         helperRate: 32,
         fulltimeHours: 76,
-        fulltimeRate: 38,
-        ownerHours: 20,
+        fulltimeRate: 34,
+        managerHours: 38,
+        managerRate: 45,
+        ownerHours: 15,
         ownerRate: 45
       }
     };
@@ -2440,6 +2474,8 @@
       inputHelperRate.value = p.helperRate;
       inputFulltimeHours.value = p.fulltimeHours;
       inputFulltimeRate.value = p.fulltimeRate;
+      inputManagerHours.value = p.managerHours;
+      inputManagerRate.value = p.managerRate;
       inputOwnerHours.value = p.ownerHours;
       inputOwnerRate.value = p.ownerRate;
 
@@ -2520,6 +2556,8 @@
     const inputHelperRate = document.getElementById('inputHelperRate');
     const inputFulltimeHours = document.getElementById('inputFulltimeHours');
     const inputFulltimeRate = document.getElementById('inputFulltimeRate');
+    const inputManagerHours = document.getElementById('inputManagerHours');
+    const inputManagerRate = document.getElementById('inputManagerRate');
     const inputOwnerHours = document.getElementById('inputOwnerHours');
     const inputOwnerRate = document.getElementById('inputOwnerRate');
 
@@ -2588,6 +2626,8 @@
       const helperRate = parseFloat(inputHelperRate.value);
       const fulltimeHours = parseFloat(inputFulltimeHours.value);
       const fulltimeRate = parseFloat(inputFulltimeRate.value);
+      const managerHours = parseFloat(inputManagerHours.value);
+      const managerRate = parseFloat(inputManagerRate.value);
       const ownerHours = parseFloat(inputOwnerHours.value);
       const ownerRate = parseFloat(inputOwnerRate.value);
 
@@ -2613,6 +2653,11 @@
       const fulltimeCost = fulltimeHours * fulltimeRate;
       document.getElementById('subtotalFulltime').textContent = `-$${Math.round(fulltimeCost).toLocaleString()} / wk`;
 
+      document.getElementById('valManagerHours').textContent = `${managerHours} hrs`;
+      document.getElementById('valManagerRate').textContent = `$${managerRate} / hr`;
+      const managerCost = managerHours * managerRate;
+      document.getElementById('subtotalManager').textContent = `-$${Math.round(managerCost).toLocaleString()} / wk`;
+
       document.getElementById('valOwnerHours').textContent = `${ownerHours} hrs`;
       document.getElementById('valOwnerRate').textContent = `$${ownerRate} / hr`;
       document.getElementById('subtotalOwnerHours').textContent = `${ownerHours} hrs / wk`;
@@ -2621,7 +2666,7 @@
       const royaltyFee = turnover * royaltyPct;
       const cogsFee = turnover * cogsPct;
       const deliveryFee = turnover * deliveryPct;
-      const hiredWages = helperCost + fulltimeCost;
+      const hiredWages = helperCost + fulltimeCost + managerCost;
 
       const weeklyNet = turnover - royaltyFee - cogsFee - deliveryFee - fixedCost - hiredWages;
       const annualNet = weeklyNet * 52;
@@ -2747,6 +2792,7 @@
       inputTurnover, inputRoyalty, inputCogs, inputDeliveryCut, inputFixedCost,
       inputHelperHours, inputHelperRate,
       inputFulltimeHours, inputFulltimeRate,
+      inputManagerHours, inputManagerRate,
       inputOwnerHours, inputOwnerRate
     ].forEach(input => {
       input.addEventListener('input', updateSimulator);
