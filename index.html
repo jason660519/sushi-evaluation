@@ -417,6 +417,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 20px;
+      margin-bottom: 30px;
     }
 
     .card {
@@ -461,6 +462,29 @@
       color: var(--text-secondary);
       margin-bottom: 12px;
       line-height: 1.6;
+    }
+
+    /* Sub-section header */
+    .sub-section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin: 34px 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Expense comparison callout */
+    .expense-highlight-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
     }
 
     /* Simulator Styling */
@@ -644,6 +668,7 @@
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow);
+      margin-bottom: 24px;
     }
 
     table {
@@ -931,7 +956,7 @@
   <div class="tabs-nav-bar">
     <div class="tabs-list" id="tabButtonsContainer">
       <button class="tab-btn active" data-tab="tab-overview" data-i18n="tab_1">1. Deal Overview</button>
-      <button class="tab-btn" data-tab="tab-concepts" data-i18n="tab_2">2. Business Concepts</button>
+      <button class="tab-btn" data-tab="tab-concepts" data-i18n="tab_2">2. Business Concepts & Expenses</button>
       <button class="tab-btn" data-tab="tab-simulator" data-i18n="tab_3">3. Feasibility & Simulator</button>
       <button class="tab-btn" data-tab="tab-market" data-i18n="tab_4">4. Market Benchmarks</button>
       <button class="tab-btn" data-tab="tab-qa" data-i18n="tab_5">5. Due Diligence & Inquiries</button>
@@ -943,7 +968,7 @@
     <div class="hero-badge" data-i18n="hero_badge">Private Investment Due Diligence Guide</div>
     <h1 class="hero-title" data-i18n="hero_title">Australian Sushi Business Investment Evaluation</h1>
     <p class="hero-subtitle" data-i18n="hero_desc">
-      A comprehensive framework designed for our investment meeting: analyzing CapEx vs OpEx, owner-operator vs managed labor models, and comparative market benchmarks.
+      A comprehensive framework designed for our investment meeting: analyzing CapEx vs OpEx, owner-operator vs managed labor models, Break-Even Point (BEP), and comparative market benchmarks.
     </p>
   </div>
 
@@ -992,12 +1017,12 @@
       <div class="tab-footer-nav">
         <div></div>
         <button class="btn-page-nav" onclick="switchTab('tab-concepts')">
-          <span data-i18n="next_concepts">Next: 2. Business Concepts</span> →
+          <span data-i18n="next_concepts">Next: 2. Business Concepts & Expenses</span> →
         </button>
       </div>
     </div>
 
-    <!-- ==================== TAB 2: BUSINESS CONCEPTS ==================== -->
+    <!-- ==================== TAB 2: BUSINESS CONCEPTS & EXPENSES ==================== -->
     <div class="tab-panel" id="tab-concepts">
       <div class="section-header">
         <div class="section-eyebrow" data-i18n="s2_eyebrow">Financial Literacy & Fundamentals</div>
@@ -1038,6 +1063,135 @@
             <p style="color: var(--accent-amber); font-weight: 600;" data-i18n="c3_summary">Critical Investigation: Why is the seller divesting after only 1 week? Physical exhaustion or a professional turnkey developer?</p>
           </div>
         </div>
+      </div>
+
+      <!-- NEW DEEP DIVE: Fixed vs Variable Operating Expenses by Model -->
+      <div class="sub-section-title" data-i18n="opex_section_title">
+        🔍 Operating Expenses Breakdown: Fixed vs. Variable by Sushi Store Model
+      </div>
+      <div class="expense-highlight-box" data-i18n="opex_intro_box">
+        Different sushi models operate under entirely different cost structures. In an independent street shop or shopping centre food court, fixed outgoings (rent, grease trap, exhaust maintenance, council rates) and variable utilities (power, delivery fees, merchant interchange) consume 25%+ of turnover. In contrast, Coles kiosks bundle rent, utilities, and commercial outgoings into the 33% royalty, resulting in near-zero fixed overhead but high sensitivity to daily food waste.
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="th_op_model">Store Model</th>
+              <th data-i18n="th_op_fixed">Fixed Miscellaneous Expenses (Weekly)</th>
+              <th data-i18n="th_op_variable">Variable Miscellaneous Expenses (Weekly)</th>
+              <th data-i18n="th_op_verdict">Risk & Operating Profile</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: rgba(56, 189, 248, 0.06);">
+              <td>
+                <span class="tag tag-blue" data-i18n="tag_target">Target: Coles Kiosk</span>
+                <div style="font-weight: 700; color: #fff; margin-top: 4px;">Snowfox inside Coles</div>
+              </td>
+              <td>
+                <strong style="color: #38bdf8;">~$80 - $150 / wk</strong>
+                <ul style="font-size: 12px; margin-top: 4px; padding-left: 14px; color: var(--text-secondary);">
+                  <li data-i18n="exp_f_coles_1">Base Rent: $0 (Turnover cut)</li>
+                  <li data-i18n="exp_f_coles_2">Council / Water Outgoings: $0</li>
+                  <li data-i18n="exp_f_coles_3">Grease trap & Waste bins: $0 (Coles provides)</li>
+                  <li data-i18n="exp_f_coles_4">Insurance & Xero accounting: ~$80-$120/wk</li>
+                </ul>
+              </td>
+              <td>
+                <ul style="font-size: 12px; padding-left: 14px; color: var(--text-secondary);">
+                  <li data-i18n="exp_v_coles_1">Electricity / Gas / Water: $0 (Coles absorbs)</li>
+                  <li data-i18n="exp_v_coles_2">EFTPOS merchant fee: $0 (Coles tills)</li>
+                  <li data-i18n="exp_v_coles_3">Delivery commissions: $0 (No UberEats)</li>
+                  <li data-i18n="exp_v_coles_4" style="color: #f87171;">Food waste & spoilage: ~$500-$900/wk (8-11%)</li>
+                  <li data-i18n="exp_v_coles_5">Packaging & consumables: ~$400-$600/wk (4-5%)</li>
+                </ul>
+              </td>
+              <td data-i18n="verdict_coles">
+                Lowest fixed debt risk. Zero power or rent shock during downturns. The sole profit killer is daily food disposal.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag tag-emerald" data-i18n="tag_street">Street Takeaway</span>
+                <div style="font-weight: 700; color: #fff; margin-top: 4px;">Independent Strip Shop</div>
+              </td>
+              <td>
+                <strong style="color: #f59e0b;">~$1,150 - $2,100 / wk</strong>
+                <ul style="font-size: 12px; margin-top: 4px; padding-left: 14px; color: var(--text-secondary);">
+                  <li data-i18n="exp_f_street_1">Fixed Rent: $800 - $1,400/wk (+3-4% annual CPI)</li>
+                  <li data-i18n="exp_f_street_2">Council & Water rates: ~$150 - $280/wk</li>
+                  <li data-i18n="exp_f_street_3">Grease trap pump-outs: ~$30 - $50/wk (Mandatory)</li>
+                  <li data-i18n="exp_f_street_4">Exhaust hood annual cleaning: ~$20/wk</li>
+                  <li data-i18n="exp_f_street_5">Commercial waste bin service: ~$50/wk</li>
+                </ul>
+              </td>
+              <td>
+                <ul style="font-size: 12px; padding-left: 14px; color: var(--text-secondary);">
+                  <li data-i18n="exp_v_street_1" style="color: #f87171;">Heavy Electricity: ~$200 - $400/wk (Refrigeration)</li>
+                  <li data-i18n="exp_v_street_2">EFTPOS merchant fees: ~$100 - $150/wk (1.2%)</li>
+                  <li data-i18n="exp_v_street_3" style="color: #f87171;">UberEats / DoorDash: ~$400 - $800/wk (30% cut)</li>
+                  <li data-i18n="exp_v_street_4">Food waste: ~$250 - $450/wk (Made to order: 3-5%)</li>
+                </ul>
+              </td>
+              <td data-i18n="verdict_street">
+                No 33% royalty cut, but fixed outgoings + electricity bills + delivery commissions consume 20-25% of turnover regardless.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag tag-amber" data-i18n="tag_mall">Shopping Centre</span>
+                <div style="font-weight: 700; color: #fff; margin-top: 4px;">Food Court Kiosk</div>
+              </td>
+              <td>
+                <strong style="color: #f87171;">~$2,600 - $5,500 / wk</strong>
+                <ul style="font-size: 12px; margin-top: 4px; padding-left: 14px; color: var(--text-secondary);">
+                  <li data-i18n="exp_f_mall_1">Base Rent: $2,000 - $4,200/wk</li>
+                  <li data-i18n="exp_f_mall_2">Centre Outgoings: $350 - $650/wk</li>
+                  <li data-i18n="exp_f_mall_3">Centre Promotion Levy: $60 - $180/wk (3-5%)</li>
+                  <li data-i18n="exp_f_mall_4">Food court dishwash/tray levy: $100 - $200/wk</li>
+                </ul>
+              </td>
+              <td>
+                <ul style="font-size: 12px; padding-left: 14px; color: var(--text-secondary);">
+                  <li data-i18n="exp_v_mall_1">Turnover Rent threshold: Extra 8-12% if sales peak</li>
+                  <li data-i18n="exp_v_mall_2">High sub-metered power: ~$250 - $450/wk</li>
+                  <li data-i18n="exp_v_mall_3">EFTPOS fee: ~$120 - $180/wk</li>
+                  <li data-i18n="exp_v_mall_4">Food waste: ~$350 - $600/wk (4-6%)</li>
+                </ul>
+              </td>
+              <td data-i18n="verdict_mall">
+                High foot traffic potential, but crushing fixed overhead. Requires $18k+/wk turnover just to survive.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="tag tag-blue" data-i18n="tag_train">Sushi Train</span>
+                <div style="font-weight: 700; color: #fff; margin-top: 4px;">Dine-In Restaurant</div>
+              </td>
+              <td>
+                <strong style="color: #f87171;">~$3,400 - $6,600 / wk</strong>
+                <ul style="font-size: 12px; margin-top: 4px; padding-left: 14px; color: var(--text-secondary);">
+                  <li data-i18n="exp_f_train_1">Large premise rent: $2,500 - $4,800/wk</li>
+                  <li data-i18n="exp_f_train_2">Conveyor belt service contract: ~$80 - $140/wk</li>
+                  <li data-i18n="exp_f_train_3">Commercial dishwasher lease & chemicals: ~$100/wk</li>
+                  <li data-i18n="exp_f_train_4">Liquor licence & music royalty (OneMusic): ~$50/wk</li>
+                </ul>
+              </td>
+              <td>
+                <ul style="font-size: 12px; padding-left: 14px; color: var(--text-secondary);">
+                  <li data-i18n="exp_v_train_1" style="color: #f87171;">Massive Power / Gas: ~$500 - $950/wk (Heavy dishwash)</li>
+                  <li data-i18n="exp_v_train_2">Complimentary tea, ginger, sauce: ~$150 - $250/wk</li>
+                  <li data-i18n="exp_v_train_3">Plate chipping & breakage: ~$50 - $100/wk</li>
+                  <li data-i18n="exp_v_train_4">Sashimi trim loss: ~$600 - $1,000/wk</li>
+                </ul>
+              </td>
+              <td data-i18n="verdict_train">
+                Highest gross dollar returns, but requires large capital, multiple front/back of house staff, and high fixed liabilities.
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <!-- Tab Navigation Footer -->
@@ -1209,7 +1363,10 @@
                 <span id="rowCogs" style="color: #f87171;">-$2,850</span>
               </div>
               <div class="breakdown-row">
-                <span data-i18n="row_fixed">Store Operating Expenses (Fixed)</span>
+                <span>
+                  <span data-i18n="row_fixed">Store Operating Expenses (Fixed)</span>
+                  <span style="font-size: 10.5px; color: var(--accent-blue); display: block;" data-i18n="row_fixed_sub">(Insurance, POS, Bookkeeping & Reserves)</span>
+                </span>
                 <span id="rowFixed" style="color: #f87171;">-$400</span>
               </div>
               <div class="breakdown-row">
@@ -1240,7 +1397,7 @@
       <!-- Tab Navigation Footer -->
       <div class="tab-footer-nav">
         <button class="btn-page-nav" onclick="switchTab('tab-concepts')">
-          ← <span data-i18n="prev_concepts">Previous: 2. Business Concepts</span>
+          ← <span data-i18n="prev_concepts">Previous: 2. Business Concepts & Expenses</span>
         </button>
         <button class="btn-page-nav" onclick="switchTab('tab-market')">
           <span data-i18n="next_market">Next: 4. Market Benchmarks</span> →
@@ -1531,17 +1688,17 @@
         lock_error: "密碼錯誤，請重新輸入。",
         lock_btn_text: "🔒 重新鎖定",
         tab_1: "1. 專案背景概況",
-        tab_2: "2. 商業模式與名詞",
+        tab_2: "2. 商業模式與雜項支出",
         tab_3: "3. 可行性與試算機",
         tab_4: "4. 全澳市場比價",
         tab_5: "5. 核心盡調與諮詢",
         hero_badge: "家庭與投資人專案盡職調查",
         hero_title: "如何客觀評估一間澳洲壽司店的投資價值？",
-        hero_desc: "本指南專門為商業決策會議設計：深入剖析 CapEx (資本支出) 與 OpEx (營運支出) 的取捨、自營勞動與全委管人力模型、損益平衡點 (Break-Even Point)、以及全澳真實求售生意的橫向對比。",
-        next_concepts: "下一步：2. 商業模式與名詞",
+        hero_desc: "本指南專門為商業決策會議設計：深入剖析 CapEx (資本支出) 與 OpEx (營運支出) 的取捨、四大店型固定與非固定雜費結構、損益平衡點 (Break-Even Point)、以及全澳真實求售生意的橫向對比。",
+        next_concepts: "下一步：2. 商業模式與雜項支出",
         prev_overview: "返回：1. 專案背景概況",
         next_simulator: "下一步：3. 可行性與試算機",
-        prev_concepts: "返回：2. 商業模式與名詞",
+        prev_concepts: "返回：2. 商業模式與雜項支出",
         next_market: "下一步：4. 全澳市場比價",
         prev_simulator: "返回：3. 可行性與試算機",
         next_qa: "下一步：5. 核心盡調與諮詢",
@@ -1575,6 +1732,51 @@
         c3_p1: "<strong>零歷史商譽 (Zero Goodwill)</strong>：僅營業 7 天代表缺乏穩固的忠誠顧客群，更無任何歷史季度的商業活動報表 (BAS) 與報稅憑證可供查驗。",
         c3_p2: "<strong>新店蜜月期效應</strong>：開幕首週常伴隨嚐鮮人潮，客流往往高於常態，後續營業額通常可能回落 15% 至 25%。",
         c3_summary: "💡 關鍵盡調：賣方為何在首週即急於轉讓？是純粹體力無法負荷，還是專業拓點工程商？",
+        opex_section_title: "🔍 店鋪雜項支出全景深度剖析：固定 vs. 非固定支出（各店型對照）",
+        opex_intro_box: "不同營運模式的壽司店，雜費支出結構截然不同。街邊獨立店或購物中心美食街，其「固定物業雜費 (Outgoings, 隔油池, 垃圾, 租金)」與「非固定雜費 (商用電費, 外送平台 30% 抽成, 刷卡費)」合計往往吞噬營業額的 25% 以上；而 Coles 超市專櫃則將租金、水電與物業管理全部打包在 33% 抽成內，固定雜費極低（每週僅約 $100 保險與記帳），但最大變動風險在於生鮮報廢損耗。",
+        th_op_model: "店鋪營運模式",
+        th_op_fixed: "店鋪固定雜項支出 (每週 / Weekly)",
+        th_op_variable: "店鋪非固定雜項支出 (每週 / Weekly)",
+        th_op_verdict: "財務風險與營運特質評價",
+        tag_mall: "商場美食街",
+        exp_f_coles_1: "基本房租：$0（純抽成制）",
+        exp_f_coles_2: "地方議會地稅/水費：$0 (超市全包)",
+        exp_f_coles_3: "隔油池與垃圾清運：$0 (使用超市壓縮機與管線)",
+        exp_f_coles_4: "商業公共責任險與 Xero 會計：約 $80 - $120/週",
+        exp_v_coles_1: "商業電費與水費：$0 (Coles 全額包底)",
+        exp_v_coles_2: "EFTPOS 刷卡手續費：$0 (超市收銀機處理)",
+        exp_v_coles_3: "外送平台抽成：$0 (專櫃不開外送)",
+        exp_v_coles_4: "食材報廢與損耗：約 $500 - $900/週 (8-11% 報廢率)",
+        exp_v_coles_5: "外帶包裝盒與耗材：約 $400 - $600/週 (4-5%)",
+        verdict_coles: "固定負債風險最低。無租金或高額電費帳單威脅。唯一的利潤殺手在於傍晚食材的報廢損耗管控。",
+        exp_f_street_1: "固定租金：$800 - $1,400/週（年年依 CPI 遞增）",
+        exp_f_street_2: "市政 Rates 與水局固定排污費：約 $150 - $280/週",
+        exp_f_street_3: "隔油池法定抽吸：約 $30 - $50/週 (強制每2-3月抽)",
+        exp_f_street_4: "排煙罩定期清洗認證：約 $20/週",
+        exp_f_street_5: "商用垃圾桶清運費：約 $50/週",
+        exp_v_street_1: "商業電費負擔極重：約 $200 - $400/週 (多門冷庫與炸爐)",
+        exp_v_street_2: "刷卡手續費：約 $100 - $150/週 (1.2% 費率)",
+        exp_v_street_3: "UberEats / DoorDash 抽佣：約 $400 - $800/週 (高達 30%)",
+        exp_v_street_4: "食材損耗：約 $250 - $450/週 (現點現做報廢率較低 3-5%)",
+        verdict_street: "無 33% 抽成看似自主，但租金、地稅、隔油池、高電費與外送抽成加總，每週吃掉 20-25% 營收，抗風險能力較脆弱。",
+        exp_f_mall_1: "天價底租：每週 $2,000 - $4,200/週",
+        exp_f_mall_2: "商場管理費 Outgoings：$350 - $650/週",
+        exp_f_mall_3: "商場推廣費 (Promotion Levy)：$60 - $180/週 (底租3-5%)",
+        exp_f_mall_4: "美食街公用洗碗與托盤管理費：$100 - $200/週",
+        exp_v_mall_1: "超額營收抽成 (Turnover Rent)：營業額若高追加 8-12%",
+        exp_v_mall_2: "商場計量高價電費：約 $250 - $450/週",
+        exp_v_mall_3: "刷卡手續費：約 $120 - $180/週",
+        exp_v_mall_4: "食材報廢：約 $350 - $600/週 (4-6%)",
+        verdict_mall: "人流量極大但固定成本極其沉重。每週營業額至少需突破 $18,000 AUD 方能跨過損益平衡點。",
+        exp_f_train_1: "大坪數租金 (100-200平米)：$2,500 - $4,800/週",
+        exp_f_train_2: "迴轉軌道系統定期保養合約：約 $80 - $140/週",
+        exp_f_train_3: "商用洗碗機租賃與化學藥劑保養：約 $100/週",
+        exp_f_train_4: "酒牌執照與音樂公播授權 (OneMusic)：約 $50/週",
+        exp_v_train_1: "超高商業電費瓦斯：約 $500 - $950/週 (全日軌道與洗碗機)",
+        exp_v_train_2: "內用免費茶包、生薑、醬油耗材：約 $150 - $250/週",
+        exp_v_train_3: "碟子與餐具破損磨損更換：約 $50 - $100/週",
+        exp_v_train_4: "生魚片修邊邊角料損耗：約 $600 - $1,000/週",
+        verdict_train: "營業額天花板最高，但設備維護、能源消耗與內用耗材雜項極其繁瑣，需龐大營運資本運作。",
         s3_eyebrow: "財務可行性與人力模型",
         s3_title: "財務可行性與三大人力成本試算機",
         s3_desc: "自由調整每週營收、抽成比率，以及三類人力角色（工讀生、正職人員、經營業主）的工時與時薪，靈活模擬「自營自管」與「全聘工純被動投資」：",
@@ -1597,7 +1799,8 @@
         row_gross: "每週未稅總營業額",
         row_royalty: "Coles + 總部抽成 (33%)",
         row_cogs: "食材、包裝與耗損 (30%)",
-        row_fixed: "店鋪固定雜項支出 (POS/保險/清潔)",
+        row_fixed: "店鋪固定雜項支出 (Fixed Expenses)",
+        row_fixed_sub: "(專櫃無水電房租，僅保險/POS/記帳約$100，設$400已含充裕儲備)",
         row_hired_wages: "外聘員工薪資支出合計 (工讀 + 正職)",
         row_owner_hourly: "業主時間實質等效時薪",
         row_roi: "本金 $70,000 年化投資回報率 (ROI %)",
@@ -1665,17 +1868,17 @@
         lock_error: "Incorrect PIN. Please try again.",
         lock_btn_text: "🔒 Lock",
         tab_1: "1. Deal Overview",
-        tab_2: "2. Business Concepts",
+        tab_2: "2. Business Concepts & Expenses",
         tab_3: "3. Feasibility & Simulator",
         tab_4: "4. Market Benchmarks",
         tab_5: "5. Due Diligence & Inquiries",
         hero_badge: "Private Investment Due Diligence Guide",
         hero_title: "Australian Sushi Business Investment Evaluation",
-        hero_desc: "A comprehensive framework designed for our investment meeting: analyzing CapEx vs OpEx, owner-operator vs managed labor models, Break-Even Point (BEP), and comparative market benchmarks.",
-        next_concepts: "Next: 2. Business Concepts",
+        hero_desc: "A comprehensive framework designed for our investment meeting: analyzing CapEx vs OpEx, fixed vs variable operating expenses by model, Break-Even Point (BEP), and comparative market benchmarks.",
+        next_concepts: "Next: 2. Business Concepts & Expenses",
         prev_overview: "Back: 1. Deal Overview",
         next_simulator: "Next: 3. Feasibility & Simulator",
-        prev_concepts: "Back: 2. Business Concepts",
+        prev_concepts: "Back: 2. Business Concepts & Expenses",
         next_market: "Next: 4. Market Benchmarks",
         prev_simulator: "Back: 3. Feasibility & Simulator",
         next_qa: "Next: 5. Due Diligence & Inquiries",
@@ -1709,6 +1912,51 @@
         c3_p1: "<strong>Zero Goodwill</strong>: Trading for only 7 days means there are no loyal repeat customers and no historical quarterly BAS tax filings to verify.",
         c3_p2: "<strong>Grand Opening Honeymoon Effect</strong>: Initial foot traffic often reflects temporary curiosity, which can taper off by 15-25% once footfall normalizes.",
         c3_summary: "Critical Investigation: Why is the seller divesting after only 1 week? Physical exhaustion or a professional turnkey developer?",
+        opex_section_title: "🔍 Operating Expenses Breakdown: Fixed vs. Variable by Sushi Store Model",
+        opex_intro_box: "Operating expenses vary drastically across business models. In independent strip shops or food courts, fixed outgoings (rent, council rates, grease trap pump-outs, commercial bins) and variable overhead (power, delivery app commissions, card fees) easily swallow 25%+ of revenue. Coles kiosks bundle rent, utilities, and outgoings into the 33% royalty, delivering near-zero fixed overhead but high exposure to daily food spoilage.",
+        th_op_model: "Store Model",
+        th_op_fixed: "Fixed Miscellaneous Expenses (Weekly)",
+        th_op_variable: "Variable Miscellaneous Expenses (Weekly)",
+        th_op_verdict: "Risk & Operating Profile",
+        tag_mall: "Food Court Kiosk",
+        exp_f_coles_1: "Base Rent: $0 (Pure turnover license)",
+        exp_f_coles_2: "Council / Water Outgoings: $0 (Coles covers)",
+        exp_f_coles_3: "Grease trap & waste bins: $0 (Coles provides)",
+        exp_f_coles_4: "Public liability insurance & Xero: ~$80-$120/wk",
+        exp_v_coles_1: "Electricity / Gas / Water: $0 (Coles absorbs)",
+        exp_v_coles_2: "EFTPOS merchant fee: $0 (Coles registers)",
+        exp_v_coles_3: "Delivery commissions: $0 (No UberEats)",
+        exp_v_coles_4: "Food waste & spoilage: ~$500-$900/wk (8-11%)",
+        exp_v_coles_5: "Packaging & consumables: ~$400-$600/wk (4-5%)",
+        verdict_coles: "Lowest fixed debt risk. Zero power or rent shock during downturns. The sole profit killer is daily food disposal.",
+        exp_f_street_1: "Fixed Rent: $800 - $1,400/wk (+3-4% annual CPI)",
+        exp_f_street_2: "Council & Water rates: ~$150 - $280/wk",
+        exp_f_street_3: "Grease trap pump-outs: ~$30 - $50/wk (Mandatory)",
+        exp_f_street_4: "Exhaust hood annual cleaning: ~$20/wk",
+        exp_f_street_5: "Commercial waste bin service: ~$50/wk",
+        exp_v_street_1: "Heavy Electricity: ~$200 - $400/wk (Refrigeration)",
+        exp_v_street_2: "EFTPOS merchant fees: ~$100 - $150/wk (1.2%)",
+        exp_v_street_3: "UberEats / DoorDash: ~$400 - $800/wk (30% cut)",
+        exp_v_street_4: "Food waste: ~$250 - $450/wk (Made to order: 3-5%)",
+        verdict_street: "No 33% royalty cut, but fixed outgoings + electricity bills + delivery commissions consume 20-25% of turnover regardless.",
+        exp_f_mall_1: "Base Rent: $2,000 - $4,200/wk",
+        exp_f_mall_2: "Centre Outgoings: $350 - $650/wk",
+        exp_f_mall_3: "Centre Promotion Levy: $60 - $180/wk (3-5%)",
+        exp_f_mall_4: "Food court dishwash/tray levy: $100 - $200/wk",
+        exp_v_mall_1: "Turnover Rent threshold: Extra 8-12% if sales peak",
+        exp_v_mall_2: "High sub-metered power: ~$250 - $450/wk",
+        exp_v_mall_3: "EFTPOS fee: ~$120 - $180/wk",
+        exp_v_mall_4: "Food waste: ~$350 - $600/wk (4-6%)",
+        verdict_mall: "High foot traffic potential, but crushing fixed overhead. Requires $18k+/wk turnover just to survive.",
+        exp_f_train_1: "Large premise rent: $2,500 - $4,800/wk",
+        exp_f_train_2: "Conveyor belt service contract: ~$80 - $140/wk",
+        exp_f_train_3: "Commercial dishwasher lease & chemicals: ~$100/wk",
+        exp_f_train_4: "Liquor licence & music royalty (OneMusic): ~$50/wk",
+        exp_v_train_1: "Massive Power / Gas: ~$500 - $950/wk (Heavy dishwash)",
+        exp_v_train_2: "Complimentary tea, ginger, sauce: ~$150 - $250/wk",
+        exp_v_train_3: "Plate chipping & breakage: ~$50 - $100/wk",
+        exp_v_train_4: "Sashimi trim loss: ~$600 - $1,000/wk",
+        verdict_train: "Highest gross dollar returns, but requires large capital, multiple front/back of house staff, and high fixed liabilities.",
         s3_eyebrow: "Financial Feasibility & Modeling",
         s3_title: "Financial Feasibility & Labor Simulator",
         s3_desc: "Customize sales and adjust the hours and wage rates for all 3 staffing tiers (Casual Helper, Full-time Staff, Business Owner) to test owner-operator vs. fully managed passive scenarios:",
@@ -1732,6 +1980,7 @@
         row_royalty: "Coles + Franchisor Cut (33%)",
         row_cogs: "COGS, Packaging & Waste (30%)",
         row_fixed: "Store Operating Expenses (Fixed)",
+        row_fixed_sub: "(Kiosk has $0 rent/power; ~$100 covers insurance/POS; $400 holds safe buffer)",
         row_hired_wages: "Total Hired Staff Wages (Roles 1 & 2)",
         row_owner_hourly: "Owner Effective Hourly Return",
         row_roi: "Annual ROI on $70,000 Capital",
@@ -1797,6 +2046,7 @@
       zh: [
         { val: "財務回報與回本週期試算", text: "財務回報與回本週期試算" },
         { val: "Coles 專櫃合約與 33% 抽成機制", text: "Coles 專櫃合約與 33% 抽成機制" },
+        { val: "店鋪固定與非固定雜費支出差異", text: "店鋪固定與非固定雜費支出差異" },
         { val: "損益平衡點 (Break-Even Point) 探討", text: "損益平衡點 (Break-Even Point) 探討" },
         { val: "共同參與投資方案討論", text: "共同參與投資方案討論" },
         { val: "實地營運工時與排班規劃", text: "實地營運工時與排班規劃" },
@@ -1805,6 +2055,7 @@
       en: [
         { val: "Financial Returns & Payback", text: "Financial Returns & Payback Modeling" },
         { val: "Coles Contract & Royalty", text: "Coles Contract & 33% Royalty Mechanism" },
+        { val: "Fixed vs Variable Operating Expenses", text: "Fixed vs. Variable Operating Expenses" },
         { val: "Break-Even Point Analysis", text: "Break-Even Point (BEP) Analysis" },
         { val: "Co-Investment Proposal", text: "Co-Investment Opportunities" },
         { val: "Operational Labor & Schedule", text: "Operational Labor & Staffing Schedule" },
@@ -1867,10 +2118,10 @@
       // Update placeholder
       if (lang === 'zh') {
         document.getElementById('formInputName').placeholder = '例：林先生 / 投資夥伴';
-        document.getElementById('formInputMsg').placeholder = '請輸入您想深入了解的合約問題、損益平衡疑慮或合作想法...';
+        document.getElementById('formInputMsg').placeholder = '請輸入您想深入了解的合約問題、雜費支出、損益平衡疑慮或合作想法...';
       } else {
         document.getElementById('formInputName').placeholder = 'e.g. Alex Lin / Investor';
-        document.getElementById('formInputMsg').placeholder = 'Share your thoughts, break-even questions, or co-investment interest...';
+        document.getElementById('formInputMsg').placeholder = 'Share your thoughts, operating expenses questions, break-even questions, or co-investment interest...';
       }
 
       // Populate select options
@@ -1938,7 +2189,7 @@
       const royaltyFee = turnover * royaltyPct;
       const cogsFee = turnover * cogsPct;
       const hiredWages = helperCost + fulltimeCost;
-      const fixedCost = 400; // Misc POS, consumables, insurance
+      const fixedCost = 400; // Misc POS, consumables, insurance, reserve buffer
 
       // Contribution Margin Ratio
       const marginRate = 1 - (royaltyPct + cogsPct); // e.g. 1 - 0.63 = 0.37 (37%)
