@@ -1416,34 +1416,58 @@
               C. Staffing & Labor Tiers (0 to 1,000 hrs/wk)
             </div>
 
-            <!-- Role 1: Casual Pool -->
+            <!-- Role 1: Student Casual -->
             <div class="labor-block">
               <div class="labor-title">
-                <span data-i18n="lbl_role_helper">1. Casual / Part-time Helper Pool</span>
-                <span id="subtotalHelper" style="color: #f87171; font-feature-settings: 'tnum';">$0 / wk</span>
+                <span data-i18n="lbl_role_student">1. Student Casual / Junior Helper</span>
+                <span id="subtotalStudent" style="color: #f87171; font-feature-settings: 'tnum';">$0 / wk</span>
               </div>
               <div class="labor-row">
                 <div>
                   <div class="control-header">
                     <span class="control-label" data-i18n="lbl_hours">Total Hours (0-1,000)</span>
-                    <span class="control-value" id="valHelperHours">0 hrs</span>
+                    <span class="control-value" id="valStudentHours">0 hrs</span>
                   </div>
-                  <input type="range" id="inputHelperHours" min="0" max="1000" step="5" value="0">
+                  <input type="range" id="inputStudentHours" min="0" max="1000" step="5" value="0">
                 </div>
                 <div>
                   <div class="control-header">
                     <span class="control-label" data-i18n="lbl_wage">Hourly Rate</span>
-                    <span class="control-value" id="valHelperRate">$32 / hr</span>
+                    <span class="control-value" id="valStudentRate">$26 / hr</span>
                   </div>
-                  <input type="range" id="inputHelperRate" min="20" max="80" step="1" value="32">
+                  <input type="range" id="inputStudentRate" min="18" max="60" step="1" value="26">
                 </div>
               </div>
             </div>
 
-            <!-- Role 2: Full-time Staff / Roll Maker -->
+            <!-- Role 2: Part-time / Adult Casual Staff -->
             <div class="labor-block">
               <div class="labor-title">
-                <span data-i18n="lbl_role_fulltime">2. Full-time Staff / Roll Maker</span>
+                <span data-i18n="lbl_role_parttime">2. Part-time / Adult Casual Staff</span>
+                <span id="subtotalParttime" style="color: #f87171; font-feature-settings: 'tnum';">$0 / wk</span>
+              </div>
+              <div class="labor-row">
+                <div>
+                  <div class="control-header">
+                    <span class="control-label" data-i18n="lbl_hours">Total Hours (0-1,000)</span>
+                    <span class="control-value" id="valParttimeHours">0 hrs</span>
+                  </div>
+                  <input type="range" id="inputParttimeHours" min="0" max="1000" step="5" value="0">
+                </div>
+                <div>
+                  <div class="control-header">
+                    <span class="control-label" data-i18n="lbl_wage">Hourly Rate</span>
+                    <span class="control-value" id="valParttimeRate">$32 / hr</span>
+                  </div>
+                  <input type="range" id="inputParttimeRate" min="22" max="80" step="1" value="32">
+                </div>
+              </div>
+            </div>
+
+            <!-- Role 3: Full-time Staff / Roll Maker -->
+            <div class="labor-block">
+              <div class="labor-title">
+                <span data-i18n="lbl_role_fulltime">3. Full-time Staff / Roll Maker</span>
                 <span id="subtotalFulltime" style="color: #f87171; font-feature-settings: 'tnum';">$0 / wk</span>
               </div>
               <div class="labor-row">
@@ -1464,10 +1488,10 @@
               </div>
             </div>
 
-            <!-- Role 3: Store Manager / Head Chef -->
+            <!-- Role 4: Store Manager / Head Chef -->
             <div class="labor-block">
               <div class="labor-title">
-                <span data-i18n="lbl_role_manager">3. Store Manager / Head Chef</span>
+                <span data-i18n="lbl_role_manager">4. Store Manager / Head Chef</span>
                 <span id="subtotalManager" style="color: #f87171; font-feature-settings: 'tnum';">$0 / wk</span>
               </div>
               <div class="labor-row">
@@ -1488,10 +1512,10 @@
               </div>
             </div>
 
-            <!-- Role 4: Business Owner -->
+            <!-- Role 5: Business Owner -->
             <div class="labor-block" style="border-color: rgba(56, 189, 248, 0.3); background: rgba(56, 189, 248, 0.05);">
               <div class="labor-title" style="color: #38bdf8;">
-                <span data-i18n="lbl_role_owner">4. Business Owner Time & Return</span>
+                <span data-i18n="lbl_role_owner">5. Business Owner Time & Return</span>
                 <span id="subtotalOwnerHours" style="color: #38bdf8; font-feature-settings: 'tnum';">40 hrs / wk</span>
               </div>
               <div class="labor-row">
@@ -1594,7 +1618,7 @@
                 <span id="rowFixed" style="color: #f87171;">-$400</span>
               </div>
               <div class="breakdown-row">
-                <span data-i18n="row_hired_wages">Total Hired Staff Wages (Roles 1, 2 & 3)</span>
+                <span data-i18n="row_hired_wages">Total Hired Staff Wages (Roles 1 to 4)</span>
                 <span id="rowHiredWages" style="color: #f87171;">-$0</span>
               </div>
             </div>
@@ -2017,10 +2041,11 @@
         lbl_delivery_cut: "外送平台佣金與刷卡手續費 %",
         lbl_fixed_rent: "每週固定租金、水電與雜費",
         grp_labor_title: "C. 人力工時池與薪資 (0 至 1,000 小時/週)",
-        lbl_role_helper: "1. 工讀生 / 兼職工時 (Casual Helper)",
-        lbl_role_fulltime: "2. 正職人員 / 壽司師傅 (Full-time Staff)",
-        lbl_role_manager: "3. 專職店長 / 營運主廚 (Store Manager)",
-        lbl_role_owner: "4. 經營業主時間投入 (Business Owner)",
+        lbl_role_student: "1. 工讀生 / 學生兼職 (Student Casual)",
+        lbl_role_parttime: "2. 兼職員工 / 成人兼差 (Part-time Staff)",
+        lbl_role_fulltime: "3. 正職人員 / 壽司師傅 (Full-time Staff)",
+        lbl_role_manager: "4. 專職店長 / 營運主廚 (Store Manager)",
+        lbl_role_owner: "5. 經營業主時間投入 (Business Owner)",
         lbl_hours: "每週總工時 (0-1,000h)",
         lbl_wage: "時薪費率",
         lbl_owner_hours: "業主工時 (0-1,000h)",
@@ -2041,7 +2066,7 @@
         row_cogs: "食材、包裝與耗損成本",
         row_delivery: "外送抽成與 EFTPOS 刷卡費",
         row_fixed: "固定租金、水電能源與物業雜費",
-        row_hired_wages: "外聘員工薪資支出合計 (角色 1, 2, 3)",
+        row_hired_wages: "外聘員工薪資支出合計 (角色 1 ~ 4)",
         s4_eyebrow: "市場行情橫向盡調",
         s4_title: "全澳壽司生意「貨比三家」真實行情清單",
         s4_desc: "取自澳洲商業仲介公開出售之真實店鋪數據，客觀衡量本案 $70,000 之性價比：",
@@ -2222,10 +2247,11 @@
         lbl_delivery_cut: "Delivery / Card Fee %",
         lbl_fixed_rent: "Fixed Rent & Outgoings/wk",
         grp_labor_title: "C. Staffing & Labor Tiers (0 to 1,000 hrs/wk)",
-        lbl_role_helper: "1. Casual / Part-time Helper Pool",
-        lbl_role_fulltime: "2. Full-time Staff / Roll Maker",
-        lbl_role_manager: "3. Store Manager / Head Chef",
-        lbl_role_owner: "4. Business Owner Time & Return",
+        lbl_role_student: "1. Student Casual / Junior Helper",
+        lbl_role_parttime: "2. Part-time / Adult Casual Staff",
+        lbl_role_fulltime: "3. Full-time Staff / Roll Maker",
+        lbl_role_manager: "4. Store Manager / Head Chef",
+        lbl_role_owner: "5. Business Owner Time & Return",
         lbl_hours: "Total Hours (0-1,000)",
         lbl_wage: "Hourly Rate",
         lbl_owner_hours: "Owner Hours (0-1,000)",
@@ -2246,7 +2272,7 @@
         row_cogs: "COGS, Packaging & Spoilage",
         row_delivery: "Delivery Commission & EFTPOS",
         row_fixed: "Fixed Rent, Power & Outgoings",
-        row_hired_wages: "Total Hired Staff Wages (Roles 1, 2 & 3)",
+        row_hired_wages: "Total Hired Staff Wages (Roles 1 to 4)",
         s4_eyebrow: "Market Due Diligence",
         s4_title: "Australian Sushi Business Market Benchmarks",
         s4_desc: "Verified listings from Australian commercial business brokers to evaluate whether $70,000 represents compelling risk-adjusted value:",
@@ -2339,8 +2365,10 @@
         cogs: 30,
         deliveryCut: 0,
         fixedCost: 400,
-        helperHours: 0,
-        helperRate: 32,
+        studentHours: 0,
+        studentRate: 26,
+        parttimeHours: 0,
+        parttimeRate: 32,
         fulltimeHours: 0,
         fulltimeRate: 34,
         managerHours: 0,
@@ -2360,8 +2388,10 @@
         cogs: 30,
         deliveryCut: 0,
         fixedCost: 450,
-        helperHours: 25,
-        helperRate: 32,
+        studentHours: 15,
+        studentRate: 26,
+        parttimeHours: 15,
+        parttimeRate: 32,
         fulltimeHours: 38,
         fulltimeRate: 34,
         managerHours: 0,
@@ -2381,8 +2411,10 @@
         cogs: 30,
         deliveryCut: 4.5,
         fixedCost: 1600,
-        helperHours: 30,
-        helperRate: 32,
+        studentHours: 20,
+        studentRate: 26,
+        parttimeHours: 15,
+        parttimeRate: 32,
         fulltimeHours: 38,
         fulltimeRate: 34,
         managerHours: 0,
@@ -2402,8 +2434,10 @@
         cogs: 32,
         deliveryCut: 2.5,
         fixedCost: 4600,
-        helperHours: 80,
-        helperRate: 32,
+        studentHours: 40,
+        studentRate: 26,
+        parttimeHours: 40,
+        parttimeRate: 32,
         fulltimeHours: 76,
         fulltimeRate: 34,
         managerHours: 38,
@@ -2470,8 +2504,10 @@
       inputDeliveryCut.value = p.deliveryCut;
       inputFixedCost.value = p.fixedCost;
 
-      inputHelperHours.value = p.helperHours;
-      inputHelperRate.value = p.helperRate;
+      inputStudentHours.value = p.studentHours;
+      inputStudentRate.value = p.studentRate;
+      inputParttimeHours.value = p.parttimeHours;
+      inputParttimeRate.value = p.parttimeRate;
       inputFulltimeHours.value = p.fulltimeHours;
       inputFulltimeRate.value = p.fulltimeRate;
       inputManagerHours.value = p.managerHours;
@@ -2552,8 +2588,10 @@
     const inputDeliveryCut = document.getElementById('inputDeliveryCut');
     const inputFixedCost = document.getElementById('inputFixedCost');
 
-    const inputHelperHours = document.getElementById('inputHelperHours');
-    const inputHelperRate = document.getElementById('inputHelperRate');
+    const inputStudentHours = document.getElementById('inputStudentHours');
+    const inputStudentRate = document.getElementById('inputStudentRate');
+    const inputParttimeHours = document.getElementById('inputParttimeHours');
+    const inputParttimeRate = document.getElementById('inputParttimeRate');
     const inputFulltimeHours = document.getElementById('inputFulltimeHours');
     const inputFulltimeRate = document.getElementById('inputFulltimeRate');
     const inputManagerHours = document.getElementById('inputManagerHours');
@@ -2622,8 +2660,10 @@
       const fixedCost = parseFloat(inputFixedCost.value);
 
       // Group C Inputs
-      const helperHours = parseFloat(inputHelperHours.value);
-      const helperRate = parseFloat(inputHelperRate.value);
+      const studentHours = parseFloat(inputStudentHours.value);
+      const studentRate = parseFloat(inputStudentRate.value);
+      const parttimeHours = parseFloat(inputParttimeHours.value);
+      const parttimeRate = parseFloat(inputParttimeRate.value);
       const fulltimeHours = parseFloat(inputFulltimeHours.value);
       const fulltimeRate = parseFloat(inputFulltimeRate.value);
       const managerHours = parseFloat(inputManagerHours.value);
@@ -2643,10 +2683,15 @@
       document.getElementById('valDeliveryCut').textContent = `${inputDeliveryCut.value}%`;
       document.getElementById('valFixedCost').textContent = `$${fixedCost.toLocaleString()}`;
 
-      document.getElementById('valHelperHours').textContent = `${helperHours} hrs`;
-      document.getElementById('valHelperRate').textContent = `$${helperRate} / hr`;
-      const helperCost = helperHours * helperRate;
-      document.getElementById('subtotalHelper').textContent = `-$${Math.round(helperCost).toLocaleString()} / wk`;
+      document.getElementById('valStudentHours').textContent = `${studentHours} hrs`;
+      document.getElementById('valStudentRate').textContent = `$${studentRate} / hr`;
+      const studentCost = studentHours * studentRate;
+      document.getElementById('subtotalStudent').textContent = `-$${Math.round(studentCost).toLocaleString()} / wk`;
+
+      document.getElementById('valParttimeHours').textContent = `${parttimeHours} hrs`;
+      document.getElementById('valParttimeRate').textContent = `$${parttimeRate} / hr`;
+      const parttimeCost = parttimeHours * parttimeRate;
+      document.getElementById('subtotalParttime').textContent = `-$${Math.round(parttimeCost).toLocaleString()} / wk`;
 
       document.getElementById('valFulltimeHours').textContent = `${fulltimeHours} hrs`;
       document.getElementById('valFulltimeRate').textContent = `$${fulltimeRate} / hr`;
@@ -2666,7 +2711,7 @@
       const royaltyFee = turnover * royaltyPct;
       const cogsFee = turnover * cogsPct;
       const deliveryFee = turnover * deliveryPct;
-      const hiredWages = helperCost + fulltimeCost + managerCost;
+      const hiredWages = studentCost + parttimeCost + fulltimeCost + managerCost;
 
       const weeklyNet = turnover - royaltyFee - cogsFee - deliveryFee - fixedCost - hiredWages;
       const annualNet = weeklyNet * 52;
@@ -2790,7 +2835,8 @@
     [
       inputInitialCapital, inputHorizon, inputDiscountRate, inputTerminalExit,
       inputTurnover, inputRoyalty, inputCogs, inputDeliveryCut, inputFixedCost,
-      inputHelperHours, inputHelperRate,
+      inputStudentHours, inputStudentRate,
+      inputParttimeHours, inputParttimeRate,
       inputFulltimeHours, inputFulltimeRate,
       inputManagerHours, inputManagerRate,
       inputOwnerHours, inputOwnerRate
